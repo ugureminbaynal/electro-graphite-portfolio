@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="2100" height="2100" viewBox="0 0 2100 2100">
+  <!-- Background - Transparent -->
+  <rect width="2100" height="2100" fill="transparent"/>
+  
+  <!-- Main Circuit Traces - Electric Cyan -->
+  <g id="main-circuit" class="animate-pulse">
+    <path id="trace-1" fill="none" stroke="#00ffff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.8" d="M 1400.98 887.73 L 1403.87 355.57 L 217.24 1542.20 L 217.24 1607.82 L 54.08 1770.97 " transform="matrix(0.1, 0, 0, -0.1, 0, 2100)"/>
+    <path id="trace-2" fill="none" stroke="#00ffff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.8" d="M 1446.64 1340.59 L 1446.64 370.60 L 260.02 1557.23 L 260.02 1622.85 L 181.26 1701.60 " transform="matrix(0.1, 0, 0, -0.1, 0, 2100)"/>
+    <path id="trace-3" fill="none" stroke="#00ffff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.8" d="M 1489.42 1768.36 L 1489.42 385.63 L 302.79 1572.26 L 302.79 1637.88 L 250.08 1690.62 " transform="matrix(0.1, 0, 0, -0.1, 0, 2100)"/>
+    <path id="trace-4" fill="none" stroke="#00ffff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.8" d="M 1532.20 2196.13 L 1532.20 400.66 L 345.57 1587.29 L 345.57 1652.91 L 239.06 1759.41 " transform="matrix(0.1, 0, 0, -0.1, 0, 2100)"/>
+  </g>
+  
+  <!-- Connection Nodes - Glowing Points -->
+  <g id="connection-nodes" class="animate-ping">
+    <circle id="node-1" cx="495.16" cy="330" r="8" fill="#00ffff" opacity="0.9" transform="matrix(0.1, 0, 0, -0.1, 0, 2100)"/>
+    <circle id="node-2" cx="1777.19" cy="219.41" r="8" fill="#00ffff" opacity="0.9" transform="matrix(0.1, 0, 0, -0.1, 0, 2100)"/>
+    <circle id="node-3" cx="1395.98" cy="1316.29" r="8" fill="#00ffff" opacity="0.9" transform="matrix(0.1, 0, 0, -0.1, 0, 2100)"/>
+    <circle id="node-4" cx="1441.65" cy="1459.54" r="8" fill="#00ffff" opacity="0.9" transform="matrix(0.1, 0, 0, -0.1, 0, 2100)"/>
+    <circle id="node-5" cx="1484.42" cy="1631.38" r="8" fill="#00ffff" opacity="0.9" transform="matrix(0.1, 0, 0, -0.1, 0, 2100)"/>
+    <circle id="node-6" cx="1527.20" cy="1803.44" r="8" fill="#00ffff" opacity="0.9" transform="matrix(0.1, 0, 0, -0.1, 0, 2100)"/>
+  </g>
+  
+  <!-- Circuit Components - Rectangular Nodes -->
+  <g id="circuit-components" class="animate-pulse">
+    <rect id="comp-1" x="1395.98" y="1316.29" width="100" height="60" fill="none" stroke="#00ffff" stroke-width="3" opacity="0.7" transform="matrix(0.1, 0, 0, -0.1, 0, 2100)"/>
+    <rect id="comp-2" x="1441.65" y="1459.54" width="100" height="60" fill="none" stroke="#00ffff" stroke-width="3" opacity="0.7" transform="matrix(0.1, 0, 0, -0.1, 0, 2100)"/>
+    <rect id="comp-3" x="1484.42" y="1631.38" width="100" height="60" fill="none" stroke="#00ffff" stroke-width="3" opacity="0.7" transform="matrix(0.1, 0, 0, -0.1, 0, 2100)"/>
+    <rect id="comp-4" x="1527.20" y="1803.44" width="100" height="60" fill="none" stroke="#00ffff" stroke-width="3" opacity="0.7" transform="matrix(0.1, 0, 0, -0.1, 0, 2100)"/>
+  </g>
+  
+  <!-- Data Flow Paths -->
+  <g id="data-flow" class="animate-pulse">
+    <path id="data-1" fill="none" stroke="#00ffff" stroke-width="8" stroke-linecap="round" stroke-dasharray="20,10" stroke-opacity="0.6" d="M 2533.98 -770.09 L 2536.87 -503.30 L 1350.28 683.33 L 1350.28 748.92 L 1187.09 912.11 " transform="matrix(0.1, 0, 0, -0.1, 0, 2100)"/>
+    <path id="data-2" fill="none" stroke="#00ffff" stroke-width="8" stroke-linecap="round" stroke-dasharray="20,10" stroke-opacity="0.6" d="M 2579.65 -724.85 L 2579.65 -488.27 L 1393.02 698.36 L 1393.02 763.97 L 1314.26 842.74 " transform="matrix(0.1, 0, 0, -0.1, 0, 2100)"/>
+    <path id="data-3" fill="none" stroke="#00ffff" stroke-width="8" stroke-linecap="round" stroke-dasharray="20,10" stroke-opacity="0.6" d="M 2622.43 -682.03 L 2622.43 -473.24 L 1458.01 713.39 L 1458.01 779.01 L 1383.05 831.75 " transform="matrix(0.1, 0, 0, -0.1, 0, 2100)"/>
+    <path id="data-4" fill="none" stroke="#00ffff" stroke-width="8" stroke-linecap="round" stroke-dasharray="20,10" stroke-opacity="0.6" d="M 2665.20 -639.25 L 2665.20 -458.21 L 1478.57 728.42 L 1478.57 794.06 L 1372.07 900.57 " transform="matrix(0.1, 0, 0, -0.1, 0, 2100)"/>
+  </g>
+  
+  <!-- Power Distribution -->
+  <g id="power-distribution" class="animate-pulse">
+    <path id="power-1" fill="none" stroke="#00ffff" stroke-width="12" stroke-linecap="round" stroke-opacity="0.8" d="M -83.96 1928.03 L -86.86 1661.23 L 1099.77 474.61 L 1099.77 408.97 L 1262.93 245.83 " transform="matrix(0.1, 0, 0, -0.1, 0, 2100)"/>
+    <path id="power-2" fill="none" stroke="#00ffff" stroke-width="12" stroke-linecap="round" stroke-opacity="0.8" d="M -129.63 1882.74 L -129.63 1646.20 L 1057.00 459.57 L 1057.00 393.95 L 1135.75 315.20 " transform="matrix(0.1, 0, 0, -0.1, 0, 2100)"/>
+    <path id="power-3" fill="none" stroke="#00ffff" stroke-width="12" stroke-linecap="round" stroke-opacity="0.8" d="M -172.41 1839.96 L -172.41 1631.17 L 1014.25 444.55 L 1014.25 378.93 L 1066.96 326.18 " transform="matrix(0.1, 0, 0, -0.1, 0, 2100)"/>
+    <path id="power-4" fill="none" stroke="#00ffff" stroke-width="12" stroke-linecap="round" stroke-opacity="0.8" d="M -215.19 1797.19 L -215.19 1616.14 L 971.44 429.52 L 971.44 363.89 L 1079.49 257.39 " transform="matrix(0.1, 0, 0, -0.1, 0, 2100)"/>
+  </g>
+  
+  <!-- Ground Connections -->
+  <g id="ground-connections" class="animate-pulse">
+    <path id="ground-1" fill="none" stroke="#00ffff" stroke-width="10" stroke-linecap="round" stroke-opacity="0.7" d="M -328.59 1750.55 L -142.12 1941.10 L 246.40 1941.10 L 349.57 1837.92 L 349.57 1762.25 " transform="matrix(0.1, 0, 0, -0.1, 0, 2100)"/>
+    <path id="ground-2" fill="none" stroke="#00ffff" stroke-width="10" stroke-linecap="round" stroke-opacity="0.7" d="M -328.86 1814.81 L -161.73 1981.94 L 287.24 1981.94 L 390.42 1878.77 L 390.42 1653.14 " transform="matrix(0.1, 0, 0, -0.1, 0, 2100)"/>
+    <path id="ground-3" fill="none" stroke="#00ffff" stroke-width="10" stroke-linecap="round" stroke-opacity="0.7" d="M -328.86 1875.26 L -181.33 2022.79 L 328.08 2022.79 L 431.26 1919.61 L 431.26 1833.46 L 501.18 1763.55 " transform="matrix(0.1, 0, 0, -0.1, 0, 2100)"/>
+    <path id="ground-4" fill="none" stroke="#00ffff" stroke-width="10" stroke-linecap="round" stroke-opacity="0.7" d="M -328.86 1935.71 L -200.94 2063.63 L 368.93 2063.63 L 737.73 1694.83 " transform="matrix(0.1, 0, 0, -0.1, 0, 2100)"/>
+  </g>
+  
+  <!-- Signal Processing Units -->
+  <g id="signal-processing" class="animate-pulse">
+    <circle id="spu-1" cx="354.53" cy="258.05" r="15" fill="none" stroke="#00ffff" stroke-width="3" opacity="0.8" transform="matrix(0.1, 0, 0, -0.1, 0, 2100)"/>
+    <circle id="spu-2" cx="395.29" cy="168.69" r="15" fill="none" stroke="#00ffff" stroke-width="3" opacity="0.8" transform="matrix(0.1, 0, 0, -0.1, 0, 2100)"/>
+    <circle id="spu-3" cx="504.63" cy="254.21" r="15" fill="none" stroke="#00ffff" stroke-width="3" opacity="0.8" transform="matrix(0.1, 0, 0, -0.1, 0, 2100)"/>
+    <circle id="spu-4" cx="741.26" cy="128.29" r="15" fill="none" stroke="#00ffff" stroke-width="3" opacity="0.8" transform="matrix(0.1, 0, 0, -0.1, 0, 2100)"/>
+  </g>
+  
+  <!-- Clock Distribution -->
+  <g id="clock-distribution" class="animate-pulse">
+    <path id="clock-1" fill="none" stroke="#00ffff" stroke-width="8" stroke-linecap="round" stroke-dasharray="15,5" stroke-opacity="0.6" d="M 1297.68 970.60 L 1117.58 1146.34 " transform="matrix(0.1, 0, 0, -0.1, 0, 2100)"/>
+    <path id="clock-2" fill="none" stroke="#00ffff" stroke-width="8" stroke-linecap="round" stroke-dasharray="15,5" stroke-opacity="0.6" d="M 1074.15 1125.45 L 1074.15 1441.95 L 964.43 1551.66 L 872.83 1551.66 L 798.48 1626.02 " transform="matrix(0.1, 0, 0, -0.1, 0, 2100)"/>
+    <path id="clock-3" fill="none" stroke="#00ffff" stroke-width="8" stroke-linecap="round" stroke-dasharray="15,5" stroke-opacity="0.6" d="M 1117.58 1146.34 L 1117.58 1485.38 L 725.41 1877.55 " transform="matrix(0.1, 0, 0, -0.1, 0, 2100)"/>
+  </g>
+  
+  <!-- Control Logic -->
+  <g id="control-logic" class="animate-pulse">
+    <path id="control-1" fill="none" stroke="#00ffff" stroke-width="10" stroke-linecap="round" stroke-opacity="0.7" d="M 1209.28 970.31 L 1074.15 1125.45 " transform="matrix(0.1, 0, 0, -0.1, 0, 2100)"/>
+    <path id="control-2" fill="none" stroke="#00ffff" stroke-width="10" stroke-linecap="round" stroke-opacity="0.7" d="M 1316.77 959.02 C 1318.85 961.09 1318.85 964.46 1316.77 966.54 L 1309.24 974.07 C 1307.16 976.15 1303.79 976.15 1301.71 974.07 L 1294.19 966.54 C 1292.11 964.46 1292.11 961.09 1294.19 959.02 L 1301.71 951.49 C 1303.79 949.41 1307.16 949.41 1309.24 951.49 Z M 1316.77 959.02 " transform="matrix(0.1, 0, 0, -0.1, 0, 2100)"/>
+    <path id="control-3" fill="none" stroke="#00ffff" stroke-width="10" stroke-linecap="round" stroke-opacity="0.7" d="M 1248.09 959.02 C 1250.17 961.09 1250.17 964.46 1248.09 966.54 L 1240.56 974.07 C 1238.48 976.15 1235.12 976.15 1233.04 974.07 L 1225.51 966.54 C 1223.43 964.46 1223.43 961.09 1225.51 959.02 L 1233.04 951.49 C 1235.12 949.41 1238.48 949.41 1240.56 951.49 Z M 1248.09 959.02 " transform="matrix(0.1, 0, 0, -0.1, 0, 2100)"/>
+  </g>
+  
+  <!-- Memory Interface -->
+  <g id="memory-interface" class="animate-pulse">
+    <path id="memory-1" fill="none" stroke="#00ffff" stroke-width="10" stroke-linecap="round" stroke-opacity="0.7" d="M 1053.35 -45.66 L 684.45 318.88 " transform="matrix(0.1, 0, 0, -0.1, 0, 2100)"/>
+    <path id="memory-2" fill="none" stroke="#00ffff" stroke-width="10" stroke-linecap="round" stroke-opacity="0.7" d="M 641.02 297.99 L 641.02 614.49 L 531.31 724.20 L 439.70 724.20 L 365.36 798.55 " transform="matrix(0.1, 0, 0, -0.1, 0, 2100)"/>
+    <path id="memory-3" fill="none" stroke="#00ffff" stroke-width="10" stroke-linecap="round" stroke-opacity="0.7" d="M 684.45 318.88 L 684.45 657.92 L 292.29 1050.09 " transform="matrix(0.1, 0, 0, -0.1, 0, 2100)"/>
+  </g>
+  
+  <!-- I/O Interface -->
+  <g id="io-interface" class="animate-pulse">
+    <path id="io-1" fill="none" stroke="#00ffff" stroke-width="10" stroke-linecap="round" stroke-opacity="0.7" d="M 1209.33 1531.26 L 1209.33 1290.58 L 1295.57 1203.46 L 1399.55 1203.46 " transform="matrix(0.1, 0, 0, -0.1, 0, 2100)"/>
+    <path id="io-2" fill="none" stroke="#00ffff" stroke-width="10" stroke-linecap="round" stroke-opacity="0.7" d="M 1165.90 1510.36 L 1165.90 1269.74 " transform="matrix(0.1, 0, 0, -0.1, 0, 2100)"/>
+    <path id="io-3" fill="none" stroke="#00ffff" stroke-width="10" stroke-linecap="round" stroke-opacity="0.7" d="M 1165.90 1269.74 L 1275.61 1160.03 L 1367.22 1160.03 L 1988.56 538.69 " transform="matrix(0.1, 0, 0, -0.1, 0, 2100)"/>
+  </g>
+  
+  <!-- Status Indicators -->
+  <g id="status-indicators" class="animate-ping">
+    <circle id="status-1" cx="1420.99" cy="1198.20" r="12" fill="#00ffff" opacity="0.9" transform="matrix(0.1, 0, 0, -0.1, 0, 2100)"/>
+    <circle id="status-2" cx="2007.45" cy="535.01" r="12" fill="#00ffff" opacity="0.9" transform="matrix(0.1, 0, 0, -0.1, 0, 2100)"/>
+    <circle id="status-3" cx="992.52" cy="1923.57" r="12" fill="#00ffff" opacity="0.9" transform="matrix(0.1, 0, 0, -0.1, 0, 2100)"/>
+    <circle id="status-4" cx="981.09" cy="1984.86" r="12" fill="#00ffff" opacity="0.9" transform="matrix(0.1, 0, 0, -0.1, 0, 2100)"/>
+  </g>
+</svg>

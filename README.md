@@ -1,54 +1,69 @@
-# Electro-Graphite Portfolio
+# React + TypeScript + Vite
 
-Uğur Emin Baynal'ın kişisel portfolio websitesi - Electro-Graphite teması ile.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## 🎨 Tema
+Currently, two official plugins are available:
 
-- **Ana Renk:** #0f0f0f (Night Graphite)
-- **Vurgu Rengi:** #00ffff (Electric Cyan)
-- **Aksiyon Butonları:** #ff6f00 (Cyber Orange)
-- **Tipografi:** IBM Plex Sans, Inter, JetBrains Mono
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## 🌐 Özellikler
+## Expanding the ESLint configuration
 
-- Bilingual (İngilizce/Türkçe)
-- Responsive tasarım
-- Dark theme
-- SEO optimizasyonu
-- Performans odaklı
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-## 📁 Proje Yapısı
+```js
+export default tseslint.config([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
-```
-/
-├── src/
-│   ├── components/
-│   ├── pages/
-│   ├── styles/
-│   └── utils/
-├── public/
-├── docs/
-└── requirements/
-```
+      // Remove tseslint.configs.recommended and replace with this
+      ...tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      ...tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      ...tseslint.configs.stylisticTypeChecked,
 
-## 🚀 Teknolojiler
-
-- Next.js / Astro
-- TypeScript
-- Tailwind CSS
-- i18n (Internationalization)
-
-## 📋 Gereksinimler
-
-Detaylı gereksinimler için `Electro-Graphite_Website_Requirements.md` dosyasına bakın.
-
-## 🔧 Kurulum
-
-```bash
-npm install
-npm run dev
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
 
-## 📄 Lisans
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-MIT License 
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
+
+export default tseslint.config([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```

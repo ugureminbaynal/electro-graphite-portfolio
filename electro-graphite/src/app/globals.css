@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-night-graphite text-cloud-white font-inter;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .cyber-button {
+    @apply bg-cyber-orange text-night-graphite font-inter font-semibold px-6 py-3 rounded-md 
+           hover:bg-opacity-90 transition-all duration-300 transform hover:scale-105 
+           focus:outline-none focus:ring-2 focus:ring-cyber-orange focus:ring-opacity-50;
+  }
+  
+  .cyber-button-secondary {
+    @apply bg-transparent border-2 border-electric-cyan text-electric-cyan font-inter font-semibold 
+           px-6 py-3 rounded-md hover:bg-electric-cyan hover:text-night-graphite 
+           transition-all duration-300 transform hover:scale-105 
+           focus:outline-none focus:ring-2 focus:ring-electric-cyan focus:ring-opacity-50;
+  }
+  
+  .card {
+    @apply bg-smoky-steel border border-soft-graphite rounded-lg p-6 
+           hover:border-electric-cyan transition-all duration-300;
+  }
+  
+  .glow-text {
+    @apply text-electric-cyan drop-shadow-[0_0_10px_rgba(0,255,255,0.5)];
+  }
+  
+  .section-title {
+    @apply font-ibm-plex text-h2 font-semibold text-cloud-white mb-8;
+  }
+  
+  .code-text {
+    @apply font-jetbrains text-code text-neon-blue;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}

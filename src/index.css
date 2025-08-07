@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-night-graphite text-cloud-white font-inter;
+  }
+  
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-night-graphite;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-electric-cyan/50 rounded-none;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-electric-cyan;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-cyber-orange text-night-graphite font-inter font-semibold text-base uppercase tracking-wide px-6 py-3 rounded-none hover:opacity-80 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:shadow-lg hover:shadow-cyber-orange/20;
+  }
+  
+  .btn-secondary {
+    @apply bg-transparent border border-electric-cyan text-electric-cyan font-inter font-semibold text-base uppercase tracking-wide px-6 py-3 rounded-none hover:bg-electric-cyan hover:text-night-graphite transition-all duration-300 cursor-pointer transform hover:scale-105;
+  }
+  
+  .project-card {
+    @apply bg-smoky-steel border border-soft-graphite p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-[1.02] hover:border-electric-cyan;
+  }
+  
+  .timeline-item {
+    @apply relative pl-8 pb-8 border-l-2 border-neon-blue;
+  }
+  
+  .timeline-time {
+    @apply font-jetbrains text-sm text-neon-blue mb-2;
+  }
+  
+  .timeline-content {
+    @apply font-inter text-cloud-white;
+  }
+  
+  .cert-card {
+    @apply bg-smoky-steel border border-soft-graphite p-6 rounded-lg hover:border-electric-cyan transition-all duration-300;
+  }
+  
+  .contact-form-input {
+    @apply bg-smoky-steel border border-soft-graphite text-cloud-white px-4 py-3 rounded-none focus:border-electric-cyan focus:outline-none transition-all duration-300;
+  }
+  
+  .contact-form-button {
+    @apply bg-electric-cyan text-night-graphite font-inter font-semibold px-6 py-3 rounded-none hover:bg-neon-blue transition-all duration-300;
+  }
+  
+  /* Hero section gradient animation */
+  .hero-gradient {
+    background: linear-gradient(135deg, rgba(15, 15, 15, 0.8) 0%, rgba(31, 31, 31, 0.6) 50%, rgba(15, 15, 15, 0.8) 100%);
+  }
+  
+  /* Floating animation for icons */
+  .float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  /* Text glow effect */
+  .text-glow {
+    text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+  }
+  
+  /* Image hover effect */
+  .image-hover {
+    @apply transition-all duration-500 transform hover:scale-110 hover:rotate-1;
+  }
+  
+  /* Button pulse effect */
+  .btn-pulse {
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255, 111, 0, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(255, 111, 0, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 111, 0, 0); }
+  }
+  
+  /* Fade in animation */
+  .fade-in {
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Slide in animations */
+  .slide-in-left {
+    animation: slideInLeft 0.8s ease-out;
+  }
+  
+  @keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  
+  .slide-in-right {
+    animation: slideInRight 0.8s ease-out;
+  }
+  
+  @keyframes slideInRight {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  
+  /* Circuit animations */
+  .circuit-flow { animation: circuitFlow 4s linear infinite; }
+  @keyframes circuitFlow {
+    0% { stroke-dashoffset: 100; }
+    100% { stroke-dashoffset: 0; }
+  }
+  
+  .data-pulse { animation: dataPulse 2s ease-in-out infinite; }
+  @keyframes dataPulse {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.1); }
+  }
+  
+  .circuit-node { animation: circuitNode 3s ease-in-out infinite; }
+  @keyframes circuitNode {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+  
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-electric-cyan to-neon-blue bg-clip-text text-transparent;
+  }
+  
+  /* Bubble background */
+  .bubble-container {
+    @apply fixed inset-0 overflow-hidden pointer-events-none;
+  }
+  
+  .bubble {
+    @apply absolute rounded-full animate-pulse;
+    animation-duration: 4s;
+  }
+  
+  .bubble:nth-child(1) {
+    @apply w-32 h-32 bg-electric-cyan/20 top-20 left-1/4;
+  }
+  
+  .bubble:nth-child(2) {
+    @apply w-24 h-24 bg-neon-blue/20 top-32 right-1/4;
+    animation-delay: 1s;
+  }
+  
+  .bubble:nth-child(3) {
+    @apply w-40 h-40 bg-cyber-orange/15 bottom-1/4 left-1/3;
+    animation-delay: 2s;
+  }
+  
+  .bubble:nth-child(4) {
+    @apply w-20 h-20 bg-electric-cyan/15 top-1/2 right-1/3;
+    animation-delay: 3s;
+  }
+  
+  .bubble:nth-child(5) {
+    @apply w-36 h-36 bg-neon-blue/15 bottom-1/3 right-1/3;
+    animation-delay: 4s;
+  }
+  
+  .bubble:nth-child(6) {
+    @apply w-28 h-28 bg-cyber-orange/10 top-16 left-1/2;
+    animation-delay: 5s;
+  }
+  
+  .bubble:nth-child(7) {
+    @apply w-16 h-16 bg-electric-cyan/15 bottom-16 right-16;
+    animation-delay: 6s;
+  }
+  
+  @keyframes float-bubble {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    25% { transform: translateY(-20px) rotate(90deg); }
+    50% { transform: translateY(-40px) rotate(180deg); }
+    75% { transform: translateY(-20px) rotate(270deg); }
+  }
+  
+  .bubble::before {
+    content: '';
+    @apply absolute inset-0 rounded-full bg-gradient-to-br from-transparent to-white/10;
+  }
+}
