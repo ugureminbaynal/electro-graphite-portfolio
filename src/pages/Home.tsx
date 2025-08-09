@@ -65,10 +65,10 @@ const Home = () => {
                 Hi, I'm <span className="text-electric-cyan">Uğur</span>
               </h1>
               
-              {/* Animated Role */}
+              {/* sssssssssssssssssssssssssssssss Role a/an */}
               <div className="h-16 flex items-center">
                 <h2 className="font-jetbrains text-2xl md:text-3xl text-text-secondary">
-                  I'm a{' '}
+                  I'm {['a', 'e', 'i', 'o', 'u'].includes(roles[currentText].toLowerCase()[0]) ? 'an' : 'a'}{' '}
                   <span className="text-electric-cyan font-semibold">
                     {roles[currentText]}
                   </span>
