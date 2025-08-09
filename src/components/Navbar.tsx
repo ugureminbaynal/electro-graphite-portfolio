@@ -12,7 +12,6 @@ const Navbar = () => {
     { name: 'Projects', path: '/projects' },
     { name: 'Experience', path: '/experience' },
     { name: 'Certificates', path: '/certificates' },
-    { name: 'Community', path: '/community' },
     { name: 'Contact', path: '/contact' },
   ]
 
@@ -23,11 +22,11 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
         <div className="flex justify-between items-center h-16">
           <Link to="/" className="flex items-center group">
-            <div className="mr-3 p-2 bg-electric-cyan/10 rounded-none group-hover:bg-electric-cyan/20 transition-all duration-300">
+            <div className="mr-4 group-hover:scale-105 transition-all duration-300">
               <img 
                 src="/assets/svg/union-logo.svg" 
                 alt="Uğur Emin Baynal Logo" 
-                className="w-6 h-6 group-hover:scale-110 transition-transform duration-300" 
+                className="w-10 h-10 group-hover:brightness-110 transition-all duration-300" 
               />
             </div>
             <h1 className="font-ibm-plex text-2xl font-bold text-electric-cyan group-hover:text-glow transition-all duration-300">

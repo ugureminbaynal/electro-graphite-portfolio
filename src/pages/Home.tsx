@@ -1,6 +1,57 @@
 import React, { useState, useEffect } from 'react'
+
+// Returns the correct English indefinite article ("a" or "an") for a given phrase.
+// Handles common edge cases like acronyms (MBA, R&D), silent-h (hour, honest), and
+// words with consonant letters but vowel sounds (e.g., "MBA"), or vowel letters but
+// consonant sounds (e.g., "university", "European").
+const getIndefiniteArticleFor = (phrase: string): 'a' | 'an' => {
+  if (!phrase) return 'a'
+
+  const trimmed = phrase.trim()
+  if (!trimmed) return 'a'
+
+  // Extract the first word/token (before space)
+  const firstToken = trimmed.split(/\s+/)[0]
+
+  // If token starts with a non-letter (e.g., numbers, symbols), try to find first letter
+  const firstLetterMatch = firstToken.match(/[A-Za-z]/)
+  const firstLetter = firstLetterMatch ? firstLetterMatch[0] : ''
+
+  if (!firstLetter) return 'a'
+
+  const lower = firstToken.toLowerCase()
+  const upper = firstToken.toUpperCase()
+
+  // Special cases where the leading 'h' is silent in many dialects
+  const silentHWords = ['honest', 'honesty', 'honor', 'honour', 'hour', 'heir', 'herb']
+  if (silentHWords.some((w) => lower.startsWith(w))) return 'an'
+
+  // Words starting with vowel letter but consonant sound ("you" sound)
+  const youSoundPrefixes = ['uni', 'use', 'user', 'euro', 'ufo'] // "UFO" handled below via acronym
+  if (youSoundPrefixes.some((p) => lower.startsWith(p))) return 'a'
+
+  // Words starting with 'one'/'once' pronounced with initial 'w' sound
+  if (lower.startsWith('one') || lower.startsWith('once')) return 'a'
+
+  // Acronyms/initialisms: if token is all-caps or contains ampersand like R&D
+  const isAcronymLike = firstToken === upper || /[A-Z]&[A-Z]/.test(firstToken)
+  if (isAcronymLike) {
+    // Letters pronounced with initial vowel sound: A (ay), E (ee), F (ef), H (aitch), I (eye),
+    // L (el), M (em), N (en), O (oh), R (ar), S (es), X (ex)
+    const vowelSoundLetters = new Set(['A', 'E', 'F', 'H', 'I', 'L', 'M', 'N', 'O', 'R', 'S', 'X'])
+    return vowelSoundLetters.has(firstLetter.toUpperCase()) ? 'an' : 'a'
+  }
+
+  // Hyphenated x- (x-ray) pronounced "ex"
+  if (/^x-/.test(lower)) return 'an'
+
+  // Default vowel-letter rule
+  if (/^[aeiou]/i.test(firstLetter)) return 'an'
+
+  return 'a'
+}
 import { Link } from 'react-router-dom'
-import { ArrowRight, Sparkles, Mail, Download, Code, Database, Github, Linkedin, Twitter, CpuIcon, CircuitBoard, Brain, Radio } from 'lucide-react'
+import { ArrowRight, Sparkles, Mail, Download, Code, Database, Linkedin, Instagram, CpuIcon, CircuitBoard, Brain, Radio } from 'lucide-react'
 
 const Home = () => {
   const [currentText, setCurrentText] = useState(0)
@@ -68,7 +119,7 @@ const Home = () => {
               {/* sssssssssssssssssssssssssssssss Role a/an */}
               <div className="h-16 flex items-center">
                 <h2 className="font-jetbrains text-2xl md:text-3xl text-text-secondary">
-                  I'm {['a', 'e', 'i', 'o', 'u'].includes(roles[currentText].toLowerCase()[0]) ? 'an' : 'a'}{' '}
+                  I'm {getIndefiniteArticleFor(roles[currentText])}{' '}
                   <span className="text-electric-cyan font-semibold">
                     {roles[currentText]}
                   </span>
@@ -114,14 +165,14 @@ const Home = () => {
               
               {/* Social Links */}
               <div className="flex space-x-4">
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-electric-cyan transition-colors">
-                  <Github size={24} />
-                </a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-electric-cyan transition-colors">
+                <a href="https://www.linkedin.com/in/ugur-emin-baynal-1b74781b2/" target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-electric-cyan transition-colors">
                   <Linkedin size={24} />
                 </a>
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-electric-cyan transition-colors">
-                  <Twitter size={24} />
+                <a href="https://instagram.com/realpremalone" target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-electric-cyan transition-colors">
+                  <Instagram size={24} />
+                </a>
+                <a href="mailto:baynal@uguremin.com" className="text-text-muted hover:text-electric-cyan transition-colors">
+                  <Mail size={24} />
                 </a>
               </div>
             </div>
@@ -183,24 +234,12 @@ const Home = () => {
               <div className="relative z-10 flex items-center justify-center">
                 <div className="w-64 h-64 bg-gradient-to-br from-electric-cyan/20 to-neon-blue/20 rounded-full backdrop-blur-sm border border-electric-cyan/30 flex items-center justify-center">
                   <div className="text-center">
-                    <div className="w-16 h-16 mx-auto mb-4 relative">
-                      {/* Circuit board pattern */}
-                      <div className="absolute inset-0 grid grid-cols-4 grid-rows-4 gap-1">
-                        {Array.from({ length: 16 }, (_, i) => (
-                          <div key={i} className="w-3 h-3 bg-electric-cyan/30 rounded-sm"></div>
-                        ))}
-                      </div>
-                      {/* Circuit traces */}
-                      <div className="absolute inset-0">
-                        <div className="absolute top-2 left-2 right-2 h-0.5 bg-electric-cyan/50 rounded-full"></div>
-                        <div className="absolute top-6 left-2 right-2 h-0.5 bg-electric-cyan/40 rounded-full"></div>
-                        <div className="absolute top-10 left-2 right-2 h-0.5 bg-electric-cyan/60 rounded-full"></div>
-                        <div className="absolute top-14 left-2 right-2 h-0.5 bg-electric-cyan/30 rounded-full"></div>
-                        <div className="absolute top-2 left-2 bottom-2 w-0.5 bg-electric-cyan/50 rounded-full"></div>
-                        <div className="absolute top-2 left-6 bottom-2 w-0.5 bg-electric-cyan/40 rounded-full"></div>
-                        <div className="absolute top-2 left-10 bottom-2 w-0.5 bg-electric-cyan/60 rounded-full"></div>
-                        <div className="absolute top-2 left-14 bottom-2 w-0.5 bg-electric-cyan/30 rounded-full"></div>
-                      </div>
+                    <div className="w-20 h-20 mx-auto mb-4 relative flex items-center justify-center">
+                      <img 
+                        src="/assets/svg/union-logo.svg" 
+                        alt="Uğur Emin Baynal Logo" 
+                        className="w-full h-full text-electric-cyan opacity-90 drop-shadow-lg" 
+                      />
                     </div>
                     <div className="font-jetbrains text-sm text-electric-cyan">
                       <div>R&D System Active</div>
@@ -319,3 +358,4 @@ const Home = () => {
 }
 
 export default Home
+

@@ -245,7 +245,7 @@ const About = () => {
                 Let's work together on innovative engineering projects and cutting-edge R&D solutions.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="mailto:ugurbaynal2003@gmail.com" className="btn-primary group">
+                <a href="mailto:baynal@uguremin.com" className="btn-primary group">
                   <Mail size={20} className="mr-2 group-hover:scale-110 transition-transform" />
                   Contact Me
                 </a>

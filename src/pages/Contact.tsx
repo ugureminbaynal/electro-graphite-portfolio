@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Mail, Phone, MapPin, Linkedin, Github, Send, Download } from 'lucide-react'
+import { Mail, Phone, MapPin, Linkedin, Instagram, Send, Download } from 'lucide-react'
 import emailjs from 'emailjs-com'
 
 const Contact = () => {
@@ -36,15 +36,15 @@ const Contact = () => {
   const socialLinks = [
     {
       name: "LinkedIn",
-      url: "https://linkedin.com/in/ugur-emin-baynal-1b74781b2/",
+      url: "https://www.linkedin.com/in/ugur-emin-baynal-1b74781b2/",
       icon: Linkedin,
       color: "text-blue-400"
     },
     {
-      name: "GitHub",
-      url: "https://github.com",
-      icon: Github,
-      color: "text-gray-400"
+      name: "Instagram", 
+      url: "https://instagram.com/realpremalone",
+      icon: Instagram,
+      color: "text-pink-400"
     }
   ]
 
@@ -313,7 +313,7 @@ const Contact = () => {
                 or want to discuss innovative R&D projects, I'm here to help bring your ideas to life.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="mailto:ugurbaynal2003@gmail.com" className="btn-primary group">
+                <a href="mailto:baynal@uguremin.com" className="btn-primary group">
                   <Mail size={20} className="mr-2 group-hover:scale-110 transition-transform" />
                   Send Email
                 </a>

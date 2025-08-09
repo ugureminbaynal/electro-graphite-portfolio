@@ -22,7 +22,6 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/experience" element={<Experience />} />
           <Route path="/certificates" element={<Certificates />} />
-          <Route path="/community" element={<div className="p-8 text-cloud-white relative z-10">Community page coming soon...</div>} />
         </Routes>
       </div>
     </Router>
