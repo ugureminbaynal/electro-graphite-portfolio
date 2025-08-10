@@ -234,7 +234,7 @@ const Home = () => {
               <div className="relative z-10 flex items-center justify-center">
                 <div className="w-64 h-64 bg-gradient-to-br from-electric-cyan/20 to-neon-blue/20 rounded-full backdrop-blur-sm border border-electric-cyan/30 flex items-center justify-center">
                   <div className="text-center">
-                    <div className="w-20 h-20 mx-auto mb-4 relative flex items-center justify-center">
+                    <div className="w-32 h-32 mx-auto flex items-center justify-center">
                       <img 
                         src="/assets/svg/union-logo.svg" 
                         alt="Uğur Emin Baynal Logo" 
