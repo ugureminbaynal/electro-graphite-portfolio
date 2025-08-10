@@ -241,10 +241,7 @@ const Home = () => {
                         className="w-full h-full text-electric-cyan opacity-90 drop-shadow-lg" 
                       />
                     </div>
-                    <div className="font-jetbrains text-sm text-electric-cyan">
-                      <div>R&D System Active</div>
-                      <div className="text-xs text-text-secondary">Engineering Solutions</div>
-                    </div>
+
                   </div>
                 </div>
               </div>
