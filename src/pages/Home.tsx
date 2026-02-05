@@ -58,11 +58,13 @@ const Home = () => {
   const [isVisible, setIsVisible] = useState(false)
 
   const roles = [
-    "Software Development Specialist",
-    "Electrical & Electronics Engineer",
-    "Computer Engineering Student", 
-    "IEEE RAS Chairman",
-    "Engineering Tutor"
+    { title: "Software Development Specialist", current: true },
+    { title: "Electrical & Electronics Engineer", current: true },
+    { title: "Computer Engineering Student", current: true },
+    { title: "IEEE RAS Chairman", current: true },
+    { title: "Engineering Tutor", current: true },
+    { title: "R&D Engineering Intern", current: false },
+    { title: "Undergraduate Teaching Assistant", current: false }
   ]
 
   const skills = [
@@ -116,12 +118,12 @@ const Home = () => {
                 Hi, I'm <span className="text-electric-cyan">Uğur</span>
               </h1>
               
-              {/* sssssssssssssssssssssssssssssss Role a/an */}
+              {/* Role carousel with I am/I was */}
               <div className="h-16 flex items-center">
                 <h2 className="font-jetbrains text-2xl md:text-3xl text-text-secondary">
-                  I'm {getIndefiniteArticleFor(roles[currentText])}{' '}
+                  {roles[currentText].current ? "I am" : "I was"} {getIndefiniteArticleFor(roles[currentText].title)}{' '}
                   <span className="text-electric-cyan font-semibold">
-                    {roles[currentText]}
+                    {roles[currentText].title}
                   </span>
                 </h2>
               </div>
