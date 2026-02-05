@@ -1,5 +1,5 @@
 import React from 'react'
-import { Mail, Download, GraduationCap, Briefcase, Languages, Users, BookOpen } from 'lucide-react'
+import { Mail, Download, GraduationCap, Briefcase, Languages, Users, BookOpen, BookMarked } from 'lucide-react'
 
 const About = () => {
   const education = [
@@ -98,6 +98,27 @@ const About = () => {
     { name: "Latin", level: "Beginner" }
   ]
 
+  const courses = [
+    {
+      code: "CE 475",
+      name: "Fundamentals and Applications of Machine Learning",
+      school: "Izmir University of Economics",
+      description: "Expanded knowledge of machine learning algorithms. Course project involved dataset prediction using MATLAB implementation."
+    },
+    {
+      code: "MCE 412",
+      name: "Autonomous Robotics",
+      school: "Izmir University of Economics",
+      description: "Learned fundamental methods of design and analysis on autonomous robotics systems."
+    },
+    {
+      code: "EEE 453",
+      name: "Adaptive Filters",
+      school: "İzmir University of Economics",
+      description: "Gained knowledge on modeling random processes, stationary processes, linear optimal (Wiener) filtering, linear adaptive filtering, steepest descent, LMS and RLS learning algorithms, and Kalman filter theory."
+    }
+  ]
+
   const organizations = [
     {
       name: "IEEE IEU Robotics and Automation Society",
@@ -154,6 +175,32 @@ const About = () => {
                   <div className="bg-electric-cyan/20 text-electric-cyan px-3 py-1 rounded text-sm font-jetbrains inline-block">
                     {edu.gpa}
                   </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Courses Section */}
+          <div className="mb-20">
+            <h2 className="font-ibm-plex text-3xl font-semibold text-cloud-white mb-8 flex items-center">
+              <BookMarked className="w-8 h-8 text-electric-cyan mr-3" />
+              Notable Courses
+            </h2>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              {courses.map((course, index) => (
+                <div key={index} className="project-card p-6">
+                  <div className="flex items-start justify-between mb-3">
+                    <span className="bg-electric-cyan/20 text-electric-cyan px-3 py-1 rounded text-sm font-jetbrains">
+                      {course.code}
+                    </span>
+                  </div>
+                  <h3 className="font-jetbrains text-lg font-semibold text-electric-cyan mb-2">
+                    {course.name}
+                  </h3>
+                  <p className="font-inter text-cloud-white text-sm mb-3">{course.school}</p>
+                  <p className="font-inter text-text-secondary text-sm leading-relaxed">
+                    {course.description}
+                  </p>
                 </div>
               ))}
             </div>
