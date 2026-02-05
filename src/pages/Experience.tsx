@@ -1,103 +1,122 @@
 import React from 'react'
-import { Briefcase, Calendar, MapPin, Building, Users, Award, Zap, Brain, Cpu } from 'lucide-react'
+import { Briefcase, Download, Users, Award, Zap, Brain, Cpu } from 'lucide-react'
+import PCBTimeline from '../components/PCBTimeline'
 
 const Experience = () => {
   const experiences = [
     {
+      id: "sds-iue",
       title: "Software Development Specialist",
-      company: "Izmir University of Economics",
+      subtitle: "Izmir University of Economics",
       period: "Jan 2026 – Present",
       location: "Izmir, Turkey",
-      type: "Full-time",
       description: "Working on software development projects at the university, focusing on innovative engineering solutions and research applications.",
-      technologies: ["Software Development", "Engineering Solutions", "Research Applications", "Python"],
+      details: "Leading software development initiatives at the university, creating innovative solutions for academic and research needs. Collaborating with faculty and researchers to implement cutting-edge technologies and streamline university operations through custom software solutions.",
+      technologies: ["Software Development", "Engineering Solutions", "Research Applications", "Python", "AI/ML"],
       achievements: [
         "Developing software solutions for university projects",
         "Contributing to research and development initiatives",
-        "Implementing engineering applications"
+        "Implementing engineering applications",
+        "Collaborating with cross-functional teams"
       ],
       icon: Zap,
-      color: "text-electric-cyan"
+      color: "text-electric-cyan",
+      status: "Active" as const
     },
     {
+      id: "rd-eps",
       title: "R&D Engineering Intern",
-      company: "EPS Technology",
+      subtitle: "EPS Technology",
       period: "Jun 2025 – Sep 2025",
       location: "Izmir, Turkey",
-      type: "Internship",
       description: "Supported an R&D project focused on color science and image processing. Contributed to experimental setups and data evaluation processes.",
-      technologies: ["Color Science", "Image Processing", "R&D", "Experimental Design"],
+      details: "Gained hands-on experience in research and development methodologies while working on advanced color science projects. Developed expertise in image processing algorithms and contributed to experimental design and data analysis for cutting-edge research initiatives.",
+      technologies: ["Color Science", "Image Processing", "R&D", "Experimental Design", "Data Analysis"],
       achievements: [
         "Contributed to cutting-edge color science research",
         "Developed experimental setups for image processing",
-        "Participated in data evaluation and analysis processes"
+        "Participated in data evaluation and analysis processes",
+        "Learned advanced R&D methodologies"
       ],
       icon: Brain,
-      color: "text-neon-blue"
+      color: "text-neon-blue",
+      status: "Completed" as const
     },
     {
+      id: "uta-iue",
       title: "Undergraduate Teaching Assistant",
-      company: "Izmir University of Economics",
+      subtitle: "Izmir University of Economics",
       period: "Oct 2024 – 2025",
       location: "Izmir, Turkey",
-      type: "Academic",
       description: "Assisted in lab courses involving OrCAD PSpice, circuit analysis, and embedded systems. Helped students understand theoretical and practical components of engineering subjects.",
-      technologies: ["OrCAD PSpice", "Circuit Analysis", "Embedded Systems", "Teaching"],
+      details: "Provided comprehensive support in engineering laboratory courses, guiding students through complex circuit analysis and simulation techniques. Developed teaching materials and mentored students on embedded systems projects, helping them bridge the gap between theoretical concepts and practical applications.",
+      technologies: ["OrCAD PSpice", "Circuit Analysis", "Embedded Systems", "Teaching", "Mentoring"],
       achievements: [
         "Supported students in laboratory courses",
         "Taught circuit analysis and simulation techniques",
-        "Mentored students in embedded systems projects"
+        "Mentored students in embedded systems projects",
+        "Created supplementary educational materials"
       ],
       icon: Users,
-      color: "text-purple-400"
+      color: "text-purple-400",
+      status: "Completed" as const
     },
     {
+      id: "tutor-pi",
       title: "Engineering Tutor",
-      company: "Pi-Course",
+      subtitle: "Pi-Course",
       period: "Aug 2024 – Present",
       location: "Remote",
-      type: "Part-time",
       description: "Delivering personalized instruction in electrical/electronics and software courses. Preparing students for midterms and finals with tailored resources.",
-      technologies: ["Electronics", "Software Engineering", "Teaching", "Tutoring"],
+      details: "Providing one-on-one and group tutoring sessions for engineering students across various skill levels. Developing custom learning materials and exam preparation strategies that have helped students from elite universities master advanced engineering concepts.",
+      technologies: ["Electronics", "Software Engineering", "Teaching", "Tutoring", "Curriculum Development"],
       achievements: [
         "Delivered personalized instruction to engineering students",
         "Prepared students for exams with tailored resources",
-        "Helped students from elite universities grasp advanced topics"
+        "Helped students from elite universities grasp advanced topics",
+        "Developed custom learning materials"
       ],
       icon: Users,
-      color: "text-yellow-400"
+      color: "text-yellow-400",
+      status: "Active" as const
     },
     {
+      id: "intern-aselsan",
       title: "Electronics Engineering Intern",
-      company: "ASELSAN Precision Optics",
+      subtitle: "ASELSAN Precision Optics",
       period: "Aug 2024 – Sep 2024",
       location: "Turkey",
-      type: "Internship",
       description: "Worked in Admittance-Quality and Thermal/Night Vision Departments, gaining hands-on experience in precision optics and defense electronics.",
-      technologies: ["Precision Optics", "Thermal Imaging", "Quality Control", "Defense Electronics"],
+      details: "Interned at Turkey's leading defense electronics company, rotating through critical departments including Admittance-Quality control and Thermal/Night Vision systems. Gained valuable experience in high-precision manufacturing processes and quality assurance for defense-grade electronics.",
+      technologies: ["Precision Optics", "Thermal Imaging", "Quality Control", "Defense Electronics", "Night Vision Systems"],
       achievements: [
         "Gained experience in precision optics manufacturing",
         "Learned thermal and night vision technology",
-        "Participated in quality control processes"
+        "Participated in quality control processes",
+        "Understood defense industry standards"
       ],
       icon: Cpu,
-      color: "text-cyber-orange"
+      color: "text-cyber-orange",
+      status: "Completed" as const
     },
     {
+      id: "dev-evolvechat",
       title: "Full-Stack Developer",
-      company: "EvolveChat",
+      subtitle: "EvolveChat",
       period: "Jan 2024 – Feb 2024",
       location: "Remote",
-      type: "Part-time",
       description: "Responsible for the development of the company's AI products, focusing on full-stack development and AI integration.",
-      technologies: ["Full-Stack Development", "AI Integration", "Web Development", "Product Development"],
+      details: "Developed AI-powered chat applications from the ground up, implementing both frontend interfaces and backend services. Integrated machine learning models with web applications and contributed to the product development lifecycle from conception to deployment.",
+      technologies: ["Full-Stack Development", "AI Integration", "Web Development", "Product Development", "Machine Learning"],
       achievements: [
         "Developed AI-powered chat applications",
         "Implemented full-stack solutions",
-        "Contributed to product development lifecycle"
+        "Contributed to product development lifecycle",
+        "Integrated ML models with web applications"
       ],
       icon: Zap,
-      color: "text-green-400"
+      color: "text-green-400",
+      status: "Completed" as const
     }
   ]
 
@@ -112,96 +131,16 @@ const Experience = () => {
     { name: "Precision Optics", category: "Specialized" }
   ]
 
-  const getTypeColor = (type: string) => {
-    switch (type) {
-      case "Internship":
-        return "bg-blue-500/20 text-blue-400 border-blue-400/30"
-      case "Academic":
-        return "bg-green-500/20 text-green-400 border-green-400/30"
-      case "Part-time":
-        return "bg-purple-500/20 text-purple-400 border-purple-400/30"
-      case "Full-time":
-        return "bg-electric-cyan/20 text-electric-cyan border-electric-cyan/30"
-      default:
-        return "bg-gray-500/20 text-gray-400 border-gray-400/30"
-    }
-  }
-
   return (
     <div className="min-h-screen relative">
-      {/* Hero Section */}
+      {/* Main Timeline Section */}
       <section className="py-20 px-4 md:px-8 lg:px-12 relative">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h1 className="font-ibm-plex text-4xl md:text-5xl font-semibold text-cloud-white mb-6">
-              Professional Experience
-            </h1>
-            <p className="font-inter text-lg text-text-secondary max-w-3xl mx-auto">
-              A diverse range of professional experiences spanning R&D, academia, and industry, 
-              showcasing expertise in electronics, software development, and engineering.
-            </p>
-          </div>
-
-          {/* Experience Timeline */}
-          <div className="space-y-8">
-            {experiences.map((exp, index) => (
-              <div key={index} className="project-card p-6">
-                <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-6">
-                  <div className="flex items-start space-x-4 mb-4 lg:mb-0">
-                    <div className={`p-3 rounded-lg bg-smoky-steel/50 border border-electric-cyan/20`}>
-                      <exp.icon className={`w-6 h-6 ${exp.color}`} />
-                    </div>
-                    <div>
-                      <h3 className="font-jetbrains text-xl font-semibold text-electric-cyan mb-1">
-                        {exp.title}
-                      </h3>
-                      <p className="font-inter text-cloud-white mb-1">{exp.company}</p>
-                      <div className="flex items-center space-x-4 text-sm">
-                        <div className="flex items-center space-x-1">
-                          <Calendar className="w-4 h-4 text-text-secondary" />
-                          <span className="font-inter text-text-secondary">{exp.period}</span>
-                        </div>
-                        <div className="flex items-center space-x-1">
-                          <MapPin className="w-4 h-4 text-text-secondary" />
-                          <span className="font-inter text-text-secondary">{exp.location}</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className={`px-3 py-1 rounded-full text-xs font-jetbrains border ${getTypeColor(exp.type)}`}>
-                    {exp.type}
-                  </div>
-                </div>
-
-                <p className="font-inter text-text-secondary mb-6 leading-relaxed">
-                  {exp.description}
-                </p>
-
-                <div className="mb-6">
-                  <h4 className="font-jetbrains text-sm font-semibold text-electric-cyan mb-3">Key Achievements:</h4>
-                  <ul className="space-y-2">
-                    {exp.achievements.map((achievement, achievementIndex) => (
-                      <li key={achievementIndex} className="flex items-start space-x-2">
-                        <div className="w-1.5 h-1.5 bg-electric-cyan rounded-full mt-2 flex-shrink-0"></div>
-                        <span className="font-inter text-text-secondary text-sm">{achievement}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="flex flex-wrap gap-2">
-                  {exp.technologies.map((tech, techIndex) => (
-                    <span 
-                      key={techIndex} 
-                      className="px-3 py-1 bg-electric-cyan/10 text-electric-cyan text-xs font-jetbrains rounded border border-electric-cyan/20"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
+          <PCBTimeline
+            entries={experiences}
+            title="Professional Experience"
+            subtitle="A diverse range of professional experiences spanning R&D, academia, and industry, showcasing expertise in electronics, software development, and engineering."
+          />
 
           {/* Skills Section */}
           <div className="mt-20">
@@ -241,7 +180,7 @@ const Experience = () => {
                   download
                   className="btn-secondary group"
                 >
-                  <Building size={20} className="mr-2 group-hover:scale-110 transition-transform" />
+                  <Download size={20} className="mr-2 group-hover:scale-110 transition-transform" />
                   Download Resume
                 </a>
               </div>

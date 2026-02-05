@@ -210,4 +210,44 @@
     content: '';
     @apply absolute inset-0 rounded-full bg-gradient-to-br from-transparent to-white/10;
   }
+
+  /* PCB Timeline Animations */
+  .animate-trace-flow {
+    animation: traceFlow 3s linear infinite;
+  }
+
+  .animate-current-flow {
+    animation: currentFlow 0.8s linear infinite;
+  }
+}
+
+/* PCB Animation Keyframes - Outside @layer for broader support */
+@keyframes traceFlow {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(500%); }
+}
+
+@keyframes currentFlow {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(400%); }
+}
+
+@keyframes viaPulse {
+  0%, 100% { 
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
+  }
+  50% { 
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.6), 0 0 40px rgba(0, 255, 255, 0.3);
+  }
+}
+
+@keyframes modalFadeIn {
+  from { 
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to { 
+    opacity: 1;
+    transform: scale(1);
+  }
 }
