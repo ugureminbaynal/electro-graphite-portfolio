@@ -17,7 +17,7 @@ const Certificates = () => {
       title: "IEEE IEU Robotics and Automation Society",
       organization: "IEEE",
       period: "Jun 2025 – Present",
-      description: "Serving as President of the IEEE IEU Robotics and Automation Society, leading initiatives in robotics education and research.",
+      description: "Serving as Chairman of the IEEE IEU Robotics and Automation Society, leading initiatives in robotics education and research.",
       category: "Leadership",
       status: "Active",
       icon: Star,
@@ -304,7 +304,7 @@ const Certificates = () => {
                   Discuss Opportunities
                 </a>
                 <a
-                  href="/Uğur-Emin-Baynal-FlowCV-Resume-20250730.pdf"
+                  href="/Uğur-Emin-Baynal-FlowCV-Resume-20260205.pdf"
                   download
                   className="btn-secondary group"
                 >

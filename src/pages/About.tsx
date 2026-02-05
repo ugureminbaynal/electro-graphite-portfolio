@@ -31,18 +31,32 @@ const About = () => {
 
   const experience = [
     {
+      title: "Software Development Specialist",
+      company: "Izmir University of Economics",
+      period: "Jan 2026 – Present",
+      location: "Izmir, Turkey",
+      description: "Working on software development projects at the university, focusing on innovative engineering solutions."
+    },
+    {
       title: "R&D Engineering Intern",
       company: "EPS Technology",
-      period: "Jun 2025 – Present",
+      period: "Jun 2025 – Sep 2025",
       location: "Izmir, Turkey",
-      description: "Supporting an R&D project focused on color science and image processing. Contributing to experimental setups and data evaluation processes."
+      description: "Supported an R&D project focused on color science and image processing. Contributed to experimental setups and data evaluation processes."
     },
     {
       title: "Undergraduate Teaching Assistant",
       company: "Izmir University of Economics",
-      period: "Oct 2024 – Present",
+      period: "Oct 2024 – 2025",
       location: "Izmir, Turkey",
-      description: "Assisting in lab courses involving OrCAD PSpice, circuit analysis, and embedded systems. Helping students understand theoretical and practical components of engineering subjects."
+      description: "Assisted in lab courses involving OrCAD PSpice, circuit analysis, and embedded systems. Helped students understand theoretical and practical components of engineering subjects."
+    },
+    {
+      title: "Engineering Tutor",
+      company: "Pi-Course",
+      period: "Aug 2024 – Present",
+      location: "Remote",
+      description: "Delivering personalized instruction in electrical/electronics and software courses. Preparing students for midterms and finals with tailored resources."
     },
     {
       title: "Electronics Engineering Intern",
@@ -87,7 +101,7 @@ const About = () => {
   const organizations = [
     {
       name: "IEEE IEU Robotics and Automation Society",
-      role: "President",
+      role: "Chairman",
       period: "Jun 2025 – Present"
     },
     {
@@ -99,6 +113,11 @@ const About = () => {
       name: "IUE Signal Processing Group",
       role: "Member",
       period: "Jun 2025 – Present"
+    },
+    {
+      name: "EcoFusion'24 by IEEE IUE Student Branch",
+      role: "Arduino Workshop Instructor",
+      period: "Oct 2024"
     }
   ]
 
@@ -250,7 +269,7 @@ const About = () => {
                   Contact Me
                 </a>
                 <a
-                  href="/Uğur-Emin-Baynal-FlowCV-Resume-20250730.pdf"
+                  href="/Uğur-Emin-Baynal-FlowCV-Resume-20260205.pdf"
                   download
                   className="btn-secondary group"
                 >

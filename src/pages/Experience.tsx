@@ -4,36 +4,68 @@ import { Briefcase, Calendar, MapPin, Building, Users, Award, Zap, Brain, Cpu } 
 const Experience = () => {
   const experiences = [
     {
+      title: "Software Development Specialist",
+      company: "Izmir University of Economics",
+      period: "Jan 2026 – Present",
+      location: "Izmir, Turkey",
+      type: "Full-time",
+      description: "Working on software development projects at the university, focusing on innovative engineering solutions and research applications.",
+      technologies: ["Software Development", "Engineering Solutions", "Research Applications", "Python"],
+      achievements: [
+        "Developing software solutions for university projects",
+        "Contributing to research and development initiatives",
+        "Implementing engineering applications"
+      ],
+      icon: Zap,
+      color: "text-electric-cyan"
+    },
+    {
       title: "R&D Engineering Intern",
       company: "EPS Technology",
-      period: "Jun 2025 – Present",
+      period: "Jun 2025 – Sep 2025",
       location: "Izmir, Turkey",
       type: "Internship",
-      description: "Supporting an R&D project focused on color science and image processing. Contributing to experimental setups and data evaluation processes.",
+      description: "Supported an R&D project focused on color science and image processing. Contributed to experimental setups and data evaluation processes.",
       technologies: ["Color Science", "Image Processing", "R&D", "Experimental Design"],
       achievements: [
-        "Contributing to cutting-edge color science research",
-        "Developing experimental setups for image processing",
-        "Participating in data evaluation and analysis processes"
+        "Contributed to cutting-edge color science research",
+        "Developed experimental setups for image processing",
+        "Participated in data evaluation and analysis processes"
       ],
       icon: Brain,
-      color: "text-electric-cyan"
+      color: "text-neon-blue"
     },
     {
       title: "Undergraduate Teaching Assistant",
       company: "Izmir University of Economics",
-      period: "Oct 2024 – Present",
+      period: "Oct 2024 – 2025",
       location: "Izmir, Turkey",
       type: "Academic",
-      description: "Assisting in lab courses involving OrCAD PSpice, circuit analysis, and embedded systems. Helping students understand theoretical and practical components of engineering subjects.",
+      description: "Assisted in lab courses involving OrCAD PSpice, circuit analysis, and embedded systems. Helped students understand theoretical and practical components of engineering subjects.",
       technologies: ["OrCAD PSpice", "Circuit Analysis", "Embedded Systems", "Teaching"],
       achievements: [
-        "Supporting students in laboratory courses",
-        "Teaching circuit analysis and simulation techniques",
-        "Mentoring students in embedded systems projects"
+        "Supported students in laboratory courses",
+        "Taught circuit analysis and simulation techniques",
+        "Mentored students in embedded systems projects"
       ],
       icon: Users,
-      color: "text-neon-blue"
+      color: "text-purple-400"
+    },
+    {
+      title: "Engineering Tutor",
+      company: "Pi-Course",
+      period: "Aug 2024 – Present",
+      location: "Remote",
+      type: "Part-time",
+      description: "Delivering personalized instruction in electrical/electronics and software courses. Preparing students for midterms and finals with tailored resources.",
+      technologies: ["Electronics", "Software Engineering", "Teaching", "Tutoring"],
+      achievements: [
+        "Delivered personalized instruction to engineering students",
+        "Prepared students for exams with tailored resources",
+        "Helped students from elite universities grasp advanced topics"
+      ],
+      icon: Users,
+      color: "text-yellow-400"
     },
     {
       title: "Electronics Engineering Intern",
@@ -88,6 +120,8 @@ const Experience = () => {
         return "bg-green-500/20 text-green-400 border-green-400/30"
       case "Part-time":
         return "bg-purple-500/20 text-purple-400 border-purple-400/30"
+      case "Full-time":
+        return "bg-electric-cyan/20 text-electric-cyan border-electric-cyan/30"
       default:
         return "bg-gray-500/20 text-gray-400 border-gray-400/30"
     }
@@ -203,7 +237,7 @@ const Experience = () => {
                   Contact for Opportunities
                 </a>
                 <a
-                  href="/Uğur-Emin-Baynal-FlowCV-Resume-20250730.pdf"
+                  href="/Uğur-Emin-Baynal-FlowCV-Resume-20260205.pdf"
                   download
                   className="btn-secondary group"
                 >

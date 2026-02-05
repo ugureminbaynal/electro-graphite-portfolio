@@ -58,10 +58,10 @@ const Home = () => {
   const [isVisible, setIsVisible] = useState(false)
 
   const roles = [
+    "Software Development Specialist",
     "Electrical & Electronics Engineer",
     "Computer Engineering Student", 
-    "R&D Engineering Intern",
-    "Undergraduate Teaching Assistant",
+    "IEEE RAS Chairman",
     "Engineering Tutor"
   ]
 
@@ -130,8 +130,7 @@ const Home = () => {
               <p className="font-inter text-lg text-text-secondary max-w-lg leading-relaxed">
                 Final-year double major in Electrical & Electronics Engineering and Computer Engineering at Izmir University of Economics. 
                 Passionate about integrating electronics and artificial intelligence to create groundbreaking solutions in R&D. 
-                Currently working as R&D Engineering Intern at EPS Technology, with experience in IoT systems, robotics design teams, 
-                and color science research. Known for rapidly learning and teaching complex engineering concepts, often helping students 
+                Currently working as Software Development Specialist at IUE, with experience in IoT systems, robotics design teams, color science research, and Multi-Agent LLM Workflow Design. Known for rapidly learning and teaching complex engineering concepts, often helping students 
                 from elite universities grasp advanced topics. Committed to innovation at the boundaries of multiple technical domains.
               </p>
               
@@ -154,7 +153,7 @@ const Home = () => {
                   </button>
                 </Link>
                 <a
-                  href="/Uğur-Emin-Baynal-FlowCV-Resume-20250730.pdf"
+                  href="/Uğur-Emin-Baynal-FlowCV-Resume-20260205.pdf"
                   download
                   className="btn-secondary group"
                 >
@@ -339,7 +338,7 @@ const Home = () => {
                 </button>
               </Link>
               <a
-                href="/Uğur-Emin-Baynal-FlowCV-Resume-20250730.pdf"
+                href="/Uğur-Emin-Baynal-FlowCV-Resume-20260205.pdf"
                 download
                 className="btn-secondary group"
               >

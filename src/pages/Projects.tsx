@@ -1,15 +1,25 @@
 import React from 'react'
-import { ExternalLink, Rocket, Cpu, Leaf, Shield, Brain, Zap, Radio, Droplets } from 'lucide-react'
+import { ExternalLink, Rocket, Cpu, Leaf, Shield, Brain, Zap, Radio, Droplets, Recycle } from 'lucide-react'
 
 const Projects = () => {
   const projects = [
     {
+      title: "Silkworm - 3D Plastic Recycling Machine",
+      subtitle: "Co-Founder, Head of R&D",
+      period: "Sep 2025 – Present",
+      description: "Designed and built a 3D plastic recycling machine, including mechanical structure and motor/heating controls. Developed microcontroller-based automation for temperature, motor speed, and safety functions. Tested and optimized the system for stable and efficient recycling performance.",
+      technologies: ["3D Printing", "Recycling", "Microcontroller", "Automation", "Motor Control"],
+      status: "Active",
+      icon: Recycle,
+      color: "text-green-500"
+    },
+    {
       title: "K.A.Y.R.A. - Indoor Localization System",
       subtitle: "Know About Your Route Always",
-      period: "Sep 2024 – Present",
+      period: "Sep 2024",
       description: "BLE-Based Localisation and Wayfinding: A Scalable Approach for Complex Indoor Environments. TÜBİTAK 2204-A Supported project focusing on indoor navigation and positioning systems.",
       technologies: ["BLE", "IoT", "Localization", "TÜBİTAK", "Embedded Systems"],
-      status: "Active",
+      status: "Completed",
       icon: Radio,
       color: "text-electric-cyan"
     },
@@ -27,20 +37,20 @@ const Projects = () => {
     {
       title: "ECOWHEELS - Energy Efficient Vehicle",
       subtitle: "Teknofest 2025 Competition",
-      period: "Mar 2025 – Present",
-      description: "Designing the most energy efficient electric vehicle. My responsibility includes the design of the Vehicle Control System, focusing on the firmware to enable user interaction and modulate car functions accordingly.",
+      period: "Mar 2025",
+      description: "Designed the most energy efficient electric vehicle. My responsibility included the design of the Vehicle Control System, focusing on the firmware to enable user interaction and modulate car functions accordingly.",
       technologies: ["Embedded Systems", "Firmware", "Vehicle Control", "Energy Efficiency", "Teknofest"],
-      status: "Active",
+      status: "Completed",
       icon: Leaf,
       color: "text-green-400"
     },
     {
       title: "ECO ROVER - Autonomous Rover",
       subtitle: "Software Team Lead / Electronics Team Member",
-      period: "Oct 2024 – Present",
+      period: "Oct 2024",
       description: "Coordinated a multidisciplinary software team for an autonomous rover project. Designed PCBs and integrated sensors using KiCAD and Altium Designer.",
       technologies: ["Autonomous Systems", "KiCAD", "Altium Designer", "PCB Design", "Sensor Integration"],
-      status: "Active",
+      status: "Completed",
       icon: Cpu,
       color: "text-blue-400"
     },

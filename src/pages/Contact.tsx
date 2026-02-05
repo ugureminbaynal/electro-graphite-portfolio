@@ -186,7 +186,7 @@ const Contact = () => {
                   Get a detailed overview of my experience, skills, and projects.
                 </p>
                 <a
-                  href="/Uğur-Emin-Baynal-FlowCV-Resume-20250730.pdf"
+                  href="/Uğur-Emin-Baynal-FlowCV-Resume-20260205.pdf"
                   download
                   className="btn-primary group inline-flex items-center"
                 >
