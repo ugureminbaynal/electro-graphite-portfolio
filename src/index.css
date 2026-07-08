@@ -7,6 +7,32 @@
 @tailwind utilities;
 
 @layer base {
+  /* Electro-Graphite theme tokens (RGB triplets for Tailwind <alpha-value> support) */
+  :root {
+    --night-graphite: 10 14 20;
+    --smoky-steel: 18 24 34;
+    --cloud-white: 232 238 244;
+    --electric-cyan: 34 211 238;
+    --neon-blue: 96 165 250;
+    --cyber-orange: 249 115 22;
+    --soft-graphite: 36 48 64;
+    --text-muted: 139 152 168;
+    --text-secondary: 170 183 198;
+  }
+
+  /* Light theme — same token names, inverted values */
+  .light {
+    --night-graphite: 243 246 250;
+    --smoky-steel: 255 255 255;
+    --cloud-white: 15 23 42;
+    --electric-cyan: 14 116 144;
+    --neon-blue: 29 78 216;
+    --cyber-orange: 194 65 12;
+    --soft-graphite: 203 213 225;
+    --text-muted: 100 116 139;
+    --text-secondary: 51 65 85;
+  }
+
   body {
     @apply bg-night-graphite text-cloud-white font-inter;
   }
@@ -26,7 +52,7 @@
   }
   
   ::-webkit-scrollbar-thumb {
-    @apply bg-electric-cyan/50 rounded-none;
+    @apply bg-electric-cyan/40 rounded-full;
   }
   
   ::-webkit-scrollbar-thumb:hover {
@@ -36,15 +62,15 @@
 
 @layer components {
   .btn-primary {
-    @apply bg-cyber-orange text-night-graphite font-inter font-semibold text-base uppercase tracking-wide px-6 py-3 rounded-none hover:opacity-80 transition-all duration-300 cursor-pointer transform hover:scale-105 hover:shadow-lg hover:shadow-cyber-orange/20;
+    @apply inline-flex items-center justify-center bg-cyber-orange text-night-graphite font-inter font-semibold text-base tracking-wide px-6 py-3 rounded-lg hover:brightness-110 transition-all duration-300 cursor-pointer transform hover:-translate-y-0.5 hover:shadow-lg hover:shadow-cyber-orange/25;
   }
-  
+
   .btn-secondary {
-    @apply bg-transparent border border-electric-cyan text-electric-cyan font-inter font-semibold text-base uppercase tracking-wide px-6 py-3 rounded-none hover:bg-electric-cyan hover:text-night-graphite transition-all duration-300 cursor-pointer transform hover:scale-105;
+    @apply inline-flex items-center justify-center bg-electric-cyan/5 border border-electric-cyan/60 text-electric-cyan font-inter font-semibold text-base tracking-wide px-6 py-3 rounded-lg hover:bg-electric-cyan hover:text-night-graphite transition-all duration-300 cursor-pointer transform hover:-translate-y-0.5 hover:shadow-lg hover:shadow-electric-cyan/20;
   }
-  
+
   .project-card {
-    @apply bg-smoky-steel border border-soft-graphite p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-[1.02] hover:border-electric-cyan;
+    @apply bg-gradient-to-b from-smoky-steel to-night-graphite/60 border border-soft-graphite/70 p-6 rounded-xl shadow-md hover:shadow-xl hover:shadow-electric-cyan/5 transition-all duration-300 transform hover:-translate-y-1 hover:border-electric-cyan/50;
   }
   
   .timeline-item {
@@ -60,20 +86,22 @@
   }
   
   .cert-card {
-    @apply bg-smoky-steel border border-soft-graphite p-6 rounded-lg hover:border-electric-cyan transition-all duration-300;
+    @apply bg-smoky-steel border border-soft-graphite/70 p-6 rounded-xl hover:border-electric-cyan/50 transition-all duration-300;
   }
-  
+
   .contact-form-input {
-    @apply bg-smoky-steel border border-soft-graphite text-cloud-white px-4 py-3 rounded-none focus:border-electric-cyan focus:outline-none transition-all duration-300;
+    @apply bg-smoky-steel border border-soft-graphite text-cloud-white px-4 py-3 rounded-lg focus:border-electric-cyan focus:outline-none transition-all duration-300;
   }
-  
+
   .contact-form-button {
-    @apply bg-electric-cyan text-night-graphite font-inter font-semibold px-6 py-3 rounded-none hover:bg-neon-blue transition-all duration-300;
+    @apply bg-electric-cyan text-night-graphite font-inter font-semibold px-6 py-3 rounded-lg hover:bg-neon-blue transition-all duration-300;
   }
-  
+
   /* Hero section gradient animation */
   .hero-gradient {
-    background: linear-gradient(135deg, rgba(15, 15, 15, 0.8) 0%, rgba(31, 31, 31, 0.6) 50%, rgba(15, 15, 15, 0.8) 100%);
+    background:
+      radial-gradient(ellipse 60% 50% at 70% 35%, rgb(var(--electric-cyan) / 0.08) 0%, transparent 70%),
+      linear-gradient(135deg, rgb(var(--night-graphite) / 0.8) 0%, rgb(var(--smoky-steel) / 0.6) 50%, rgb(var(--night-graphite) / 0.8) 100%);
   }
   
   /* Floating animation for icons */
@@ -97,9 +125,9 @@
   }
   
   @keyframes pulse {
-    0% { box-shadow: 0 0 0 0 rgba(255, 111, 0, 0.7); }
-    70% { box-shadow: 0 0 0 10px rgba(255, 111, 0, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(255, 111, 0, 0); }
+    0% { box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(249, 115, 22, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(249, 115, 22, 0); }
   }
   
   /* Fade in animation */
@@ -221,6 +249,26 @@
   }
 }
 
+/* Background PCB trace current pulses */
+.trace-pulse {
+  stroke-dasharray: 45 955;
+  animation-name: tracePulseFlow;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes tracePulseFlow {
+  from { stroke-dashoffset: 1000; }
+  to { stroke-dashoffset: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trace-pulse {
+    animation: none;
+    opacity: 0;
+  }
+}
+
 /* PCB Animation Keyframes - Outside @layer for broader support */
 @keyframes traceFlow {
   0% { transform: translateY(-100%); }
@@ -233,11 +281,11 @@
 }
 
 @keyframes viaPulse {
-  0%, 100% { 
-    box-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(34, 211, 238, 0.3);
   }
-  50% { 
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.6), 0 0 40px rgba(0, 255, 255, 0.3);
+  50% {
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.6), 0 0 40px rgba(34, 211, 238, 0.3);
   }
 }
 

@@ -1,21 +1,42 @@
 import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, Sun, Moon } from 'lucide-react'
+import { useSettings } from '../context/SettingsContext'
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const location = useLocation()
+  const { theme, lang, toggleTheme, toggleLang } = useSettings()
 
   const navLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'About', path: '/about' },
-    { name: 'Projects', path: '/projects' },
-    { name: 'Experience', path: '/experience' },
-    { name: 'Certificates', path: '/certificates' },
-    { name: 'Contact', path: '/contact' },
+    { name: lang === 'tr' ? 'Ana Sayfa' : 'Home', path: '/' },
+    { name: lang === 'tr' ? 'Hakkımda' : 'About', path: '/about' },
+    { name: lang === 'tr' ? 'Projeler' : 'Projects', path: '/projects' },
+    { name: lang === 'tr' ? 'Deneyim' : 'Experience', path: '/experience' },
+    { name: lang === 'tr' ? 'Sertifikalar' : 'Certificates', path: '/certificates' },
+    { name: lang === 'tr' ? 'İletişim' : 'Contact', path: '/contact' },
   ]
 
   const isActive = (path: string) => location.pathname === path
+
+  const settingsButtons = (
+    <div className="flex items-center space-x-2">
+      <button
+        onClick={toggleTheme}
+        aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+        className="p-2 rounded-lg text-text-muted hover:text-electric-cyan hover:bg-electric-cyan/10 transition-all duration-300"
+      >
+        {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+      </button>
+      <button
+        onClick={toggleLang}
+        aria-label={lang === 'en' ? 'Türkçeye geç' : 'Switch to English'}
+        className="px-2 py-1.5 rounded-lg font-jetbrains text-xs font-semibold text-text-muted border border-soft-graphite hover:text-electric-cyan hover:border-electric-cyan/50 hover:bg-electric-cyan/10 transition-all duration-300"
+      >
+        {lang === 'en' ? 'TR' : 'EN'}
+      </button>
+    </div>
+  )
 
   return (
     <nav className="sticky top-0 backdrop-blur bg-night-graphite/80 border-b border-soft-graphite z-50">
@@ -23,22 +44,22 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           <Link to="/" className="flex items-center group">
             <div className="mr-4 group-hover:scale-105 transition-all duration-300">
-              <img 
-                src="/assets/svg/union-logo.svg" 
-                alt="Uğur Emin Baynal Logo" 
-                className="w-10 h-10 group-hover:brightness-110 transition-all duration-300" 
+              <img
+                src="/assets/svg/union-logo.svg"
+                alt="Uğur Emin Baynal Logo"
+                className="w-10 h-10 group-hover:brightness-110 transition-all duration-300"
               />
             </div>
-            <h1 className="font-ibm-plex text-2xl font-bold text-electric-cyan group-hover:text-glow transition-all duration-300">
+            <span className="font-ibm-plex text-xl font-bold text-electric-cyan group-hover:text-glow transition-all duration-300">
               Uğur Emin Baynal
-            </h1>
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link, index) => (
               <Link
-                key={link.name}
+                key={link.path}
                 to={link.path}
                 className={`font-inter text-sm font-medium transition-all duration-300 relative group ${
                   isActive(link.path)
@@ -55,13 +76,16 @@ const Navbar = () => {
                 </span>
               </Link>
             ))}
+            {settingsButtons}
           </div>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden">
+          {/* Mobile: settings + menu button */}
+          <div className="md:hidden flex items-center space-x-2">
+            {settingsButtons}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-cloud-white hover:text-electric-cyan transition-all duration-300 p-2 rounded-none hover:bg-electric-cyan/10"
+              aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+              className="text-cloud-white hover:text-electric-cyan transition-all duration-300 p-2 rounded-lg hover:bg-electric-cyan/10"
             >
               {isMenuOpen ? (
                 <X size={24} className="transform rotate-180 transition-transform duration-300" />
@@ -78,7 +102,7 @@ const Navbar = () => {
             <div className="px-2 pt-2 pb-3 space-y-1">
               {navLinks.map((link, index) => (
                 <Link
-                  key={link.name}
+                  key={link.path}
                   to={link.path}
                   className={`block px-3 py-2 font-inter text-sm font-medium transition-all duration-300 transform hover:translate-x-2 ${
                     isActive(link.path)

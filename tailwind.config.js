@@ -7,16 +7,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Electro-Graphite Color Palette
-        'night-graphite': '#0f0f0f',
-        'smoky-steel': '#1f1f1f',
-        'cloud-white': '#e0e0e0',
-        'electric-cyan': '#00ffff',
-        'neon-blue': '#2979ff',
-        'cyber-orange': '#ff6f00',
-        'soft-graphite': '#2c2c2c',
-        'text-muted': '#a0a0a0',
-        'text-secondary': '#c7c7c7',
+        // Electro-Graphite Color Palette (v3 — CSS variables, themeable via .light on <html>)
+        // Values are defined in src/index.css (:root = dark, .light = light theme)
+        'night-graphite': 'rgb(var(--night-graphite) / <alpha-value>)',
+        'smoky-steel': 'rgb(var(--smoky-steel) / <alpha-value>)',
+        'cloud-white': 'rgb(var(--cloud-white) / <alpha-value>)',
+        'electric-cyan': 'rgb(var(--electric-cyan) / <alpha-value>)',
+        'neon-blue': 'rgb(var(--neon-blue) / <alpha-value>)',
+        'cyber-orange': 'rgb(var(--cyber-orange) / <alpha-value>)',
+        'soft-graphite': 'rgb(var(--soft-graphite) / <alpha-value>)',
+        'text-muted': 'rgb(var(--text-muted) / <alpha-value>)',
+        'text-secondary': 'rgb(var(--text-secondary) / <alpha-value>)',
       },
       fontFamily: {
         'ibm-plex': ['IBM Plex Sans', 'sans-serif'],
@@ -43,8 +44,8 @@ export default {
       },
       keyframes: {
         glow: {
-          '0%': { boxShadow: '0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 15px #00ffff' },
-          '100%': { boxShadow: '0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff' },
+          '0%': { boxShadow: '0 0 5px #22d3ee, 0 0 10px #22d3ee, 0 0 15px #22d3ee' },
+          '100%': { boxShadow: '0 0 10px #22d3ee, 0 0 20px #22d3ee, 0 0 30px #22d3ee' },
         },
         slideUp: {
           '0%': { transform: 'translateY(20px)', opacity: '0' },
@@ -67,8 +68,8 @@ export default {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-        'cyber-gradient': 'linear-gradient(135deg, #0f0f0f 0%, #1f1f1f 100%)',
-        'hero-gradient': 'linear-gradient(45deg, #0f0f0f, #1a1a1f, #0f0f0f)',
+        'cyber-gradient': 'linear-gradient(135deg, rgb(var(--night-graphite)) 0%, rgb(var(--smoky-steel)) 100%)',
+        'hero-gradient': 'linear-gradient(45deg, rgb(var(--night-graphite)), rgb(var(--smoky-steel)), rgb(var(--night-graphite)))',
       },
       spacing: {
         '18': '4.5rem',

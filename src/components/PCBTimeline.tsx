@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { X, Calendar, MapPin, ExternalLink } from 'lucide-react'
+import { useSettings } from '../context/SettingsContext'
 
 interface TimelineEntry {
   id: string
@@ -28,8 +29,10 @@ interface PCBTimelineProps {
 const PCBTimeline: React.FC<PCBTimelineProps> = ({ entries, title, subtitle }) => {
   const [hoveredId, setHoveredId] = useState<string | null>(null)
   const [selectedEntry, setSelectedEntry] = useState<TimelineEntry | null>(null)
+  const { lang } = useSettings()
+  const isTr = lang === 'tr'
 
-  // Sort entries by date (most recent first)
+  // Sort entries by date (most recent first); recognizes English and Turkish month abbreviations
   const sortedEntries = [...entries].sort((a, b) => {
     const getYear = (period: string) => {
       const match = period.match(/(\d{4})/)
@@ -38,9 +41,11 @@ const PCBTimeline: React.FC<PCBTimelineProps> = ({ entries, title, subtitle }) =
     const getMonth = (period: string) => {
       const months: { [key: string]: number } = {
         'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr': 4, 'May': 5, 'Jun': 6,
-        'Jul': 7, 'Aug': 8, 'Sep': 9, 'Oct': 10, 'Nov': 11, 'Dec': 12
+        'Jul': 7, 'Aug': 8, 'Sep': 9, 'Oct': 10, 'Nov': 11, 'Dec': 12,
+        'Oca': 1, 'Şub': 2, 'Nis': 4, 'Haz': 6,
+        'Tem': 7, 'Ağu': 8, 'Eyl': 9, 'Eki': 10, 'Kas': 11, 'Ara': 12
       }
-      const match = period.match(/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)/)
+      const match = period.match(/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec|Oca|Şub|Nis|Haz|Tem|Ağu|Eyl|Eki|Kas|Ara)/)
       return match ? months[match[1]] : 0
     }
     const yearA = getYear(a.period)
@@ -50,9 +55,14 @@ const PCBTimeline: React.FC<PCBTimelineProps> = ({ entries, title, subtitle }) =
   })
 
   const getStatusColor = (status?: string) => {
-    return status === 'Active' 
+    return status === 'Active'
       ? 'bg-green-500/20 text-green-400 border-green-400/30'
       : 'bg-blue-500/20 text-blue-400 border-blue-400/30'
+  }
+
+  const getStatusLabel = (status?: string) => {
+    if (!isTr) return status
+    return status === 'Active' ? 'Aktif' : 'Tamamlandı'
   }
 
   return (
@@ -69,8 +79,8 @@ const PCBTimeline: React.FC<PCBTimelineProps> = ({ entries, title, subtitle }) =
 
       {/* PCB Timeline Container */}
       <div className="relative max-w-6xl mx-auto">
-        {/* Main PCB Trace - Vertical Line */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full">
+        {/* Main PCB Trace - Vertical Line (left rail on mobile, centered on desktop) */}
+        <div className="absolute left-5 md:left-1/2 transform -translate-x-1/2 w-1 h-full">
           {/* Copper trace background */}
           <div className="absolute inset-0 bg-gradient-to-b from-electric-cyan/40 via-electric-cyan/60 to-electric-cyan/40 rounded-full" />
           {/* Trace glow effect */}
@@ -96,17 +106,17 @@ const PCBTimeline: React.FC<PCBTimelineProps> = ({ entries, title, subtitle }) =
                 onMouseLeave={() => setHoveredId(null)}
               >
                 {/* Via Node (Center) - positioned at top of card */}
-                <div className="absolute left-1/2 transform -translate-x-1/2 top-10 z-20">
+                <div className="absolute left-5 md:left-1/2 transform -translate-x-1/2 top-10 z-20">
                   {/* Via outer ring */}
                   <div className={`
                     w-8 h-8 rounded-full border-2 border-electric-cyan bg-deep-charcoal
                     flex items-center justify-center transition-all duration-300
-                    ${isHovered ? 'scale-125 border-4 shadow-[0_0_20px_rgba(0,255,255,0.6)]' : ''}
+                    ${isHovered ? 'scale-125 border-4 shadow-[0_0_20px_rgba(34,211,238,0.6)]' : ''}
                   `}>
                     {/* Via inner pad */}
                     <div className={`
                       w-4 h-4 rounded-full bg-electric-cyan transition-all duration-300
-                      ${isHovered ? 'bg-white shadow-[0_0_15px_rgba(0,255,255,0.8)]' : ''}
+                      ${isHovered ? 'bg-white shadow-[0_0_15px_rgba(34,211,238,0.8)]' : ''}
                     `} />
                   </div>
                   {/* Via drill hole */}
@@ -114,11 +124,11 @@ const PCBTimeline: React.FC<PCBTimelineProps> = ({ entries, title, subtitle }) =
                 </div>
 
                 {/* Branch Trace - connects via to card edge (stops before card) */}
-                <div 
+                <div
                   className={`
-                    absolute top-10 h-1
-                    ${isLeft 
-                      ? 'left-[calc(50%-80px)] w-[60px]' 
+                    hidden md:block absolute top-10 h-1
+                    ${isLeft
+                      ? 'left-[calc(50%-80px)] w-[60px]'
                       : 'left-[calc(50%+20px)] w-[60px]'
                     }
                   `}
@@ -127,7 +137,7 @@ const PCBTimeline: React.FC<PCBTimelineProps> = ({ entries, title, subtitle }) =
                   {/* Trace background */}
                   <div className={`
                     absolute inset-0 rounded-full transition-all duration-300
-                    ${isHovered ? 'bg-electric-cyan shadow-[0_0_10px_rgba(0,255,255,0.5)]' : 'bg-electric-cyan/40'}
+                    ${isHovered ? 'bg-electric-cyan shadow-[0_0_10px_rgba(34,211,238,0.5)]' : 'bg-electric-cyan/40'}
                   `} />
                   
                   {/* Current flow animation */}
@@ -140,8 +150,9 @@ const PCBTimeline: React.FC<PCBTimelineProps> = ({ entries, title, subtitle }) =
 
                 {/* Entry Card */}
                 <div className={`
-                  w-[calc(50%-80px)] cursor-pointer
-                  ${isLeft ? 'mr-auto' : 'ml-auto'}
+                  w-auto ml-14 cursor-pointer
+                  md:w-[calc(50%-80px)]
+                  ${isLeft ? 'md:ml-0 md:mr-auto' : 'md:ml-auto'}
                 `}>
                   <div
                     onClick={() => setSelectedEntry(entry)}
@@ -149,7 +160,7 @@ const PCBTimeline: React.FC<PCBTimelineProps> = ({ entries, title, subtitle }) =
                       relative p-6 rounded-lg border transition-all duration-300 overflow-visible
                       bg-smoky-steel/30 backdrop-blur-sm
                       ${isHovered 
-                        ? 'border-electric-cyan shadow-[0_0_30px_rgba(0,255,255,0.2)] scale-[1.02]' 
+                        ? 'border-electric-cyan shadow-[0_0_30px_rgba(34,211,238,0.2)] scale-[1.02]' 
                         : 'border-electric-cyan/20 hover:border-electric-cyan/40'
                       }
                     `}
@@ -175,7 +186,7 @@ const PCBTimeline: React.FC<PCBTimelineProps> = ({ entries, title, subtitle }) =
                       </div>
                       {entry.status && (
                         <span className={`px-2 py-1 rounded-full text-xs font-jetbrains border whitespace-nowrap flex-shrink-0 ${getStatusColor(entry.status)}`}>
-                          {entry.status}
+                          {getStatusLabel(entry.status)}
                         </span>
                       )}
                     </div>
@@ -220,7 +231,7 @@ const PCBTimeline: React.FC<PCBTimelineProps> = ({ entries, title, subtitle }) =
                       )}
 
                       <div className="text-xs text-electric-cyan font-jetbrains flex items-center">
-                        <span>Click for details</span>
+                        <span>{isTr ? 'Detaylar için tıkla' : 'Click for details'}</span>
                         <ExternalLink className="w-3 h-3 ml-1" />
                       </div>
                     </div>
@@ -276,7 +287,7 @@ const PCBTimeline: React.FC<PCBTimelineProps> = ({ entries, title, subtitle }) =
                     </h2>
                     {selectedEntry.status && (
                       <span className={`px-3 py-1 rounded-full text-sm font-jetbrains border whitespace-nowrap flex-shrink-0 ${getStatusColor(selectedEntry.status)}`}>
-                        {selectedEntry.status}
+                        {getStatusLabel(selectedEntry.status)}
                       </span>
                     )}
                   </div>
@@ -298,7 +309,7 @@ const PCBTimeline: React.FC<PCBTimelineProps> = ({ entries, title, subtitle }) =
 
               {/* Description */}
               <div className="mb-6">
-                <h3 className="font-jetbrains text-sm font-semibold text-electric-cyan mb-2">Overview</h3>
+                <h3 className="font-jetbrains text-sm font-semibold text-electric-cyan mb-2">{isTr ? 'Genel Bakış' : 'Overview'}</h3>
                 <p className="font-inter text-text-secondary leading-relaxed">
                   {selectedEntry.details || selectedEntry.description}
                 </p>
@@ -307,7 +318,7 @@ const PCBTimeline: React.FC<PCBTimelineProps> = ({ entries, title, subtitle }) =
               {/* Achievements */}
               {selectedEntry.achievements && selectedEntry.achievements.length > 0 && (
                 <div className="mb-6">
-                  <h3 className="font-jetbrains text-sm font-semibold text-electric-cyan mb-3">Key Achievements</h3>
+                  <h3 className="font-jetbrains text-sm font-semibold text-electric-cyan mb-3">{isTr ? 'Öne Çıkanlar' : 'Key Achievements'}</h3>
                   <ul className="space-y-2">
                     {selectedEntry.achievements.map((achievement, i) => (
                       <li key={i} className="flex items-start space-x-2">
@@ -322,7 +333,7 @@ const PCBTimeline: React.FC<PCBTimelineProps> = ({ entries, title, subtitle }) =
               {/* Technologies */}
               {selectedEntry.technologies && selectedEntry.technologies.length > 0 && (
                 <div className="mb-6">
-                  <h3 className="font-jetbrains text-sm font-semibold text-electric-cyan mb-3">Technologies</h3>
+                  <h3 className="font-jetbrains text-sm font-semibold text-electric-cyan mb-3">{isTr ? 'Teknolojiler' : 'Technologies'}</h3>
                   <div className="flex flex-wrap gap-2">
                     {selectedEntry.technologies.map((tech, i) => (
                       <span 
@@ -339,7 +350,7 @@ const PCBTimeline: React.FC<PCBTimelineProps> = ({ entries, title, subtitle }) =
               {/* Images */}
               {selectedEntry.images && selectedEntry.images.length > 0 && (
                 <div className="mb-6">
-                  <h3 className="font-jetbrains text-sm font-semibold text-electric-cyan mb-3">Gallery</h3>
+                  <h3 className="font-jetbrains text-sm font-semibold text-electric-cyan mb-3">{isTr ? 'Galeri' : 'Gallery'}</h3>
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                     {selectedEntry.images.map((img, i) => (
                       <div key={i} className="aspect-video rounded-lg overflow-hidden border border-electric-cyan/20">
@@ -353,7 +364,7 @@ const PCBTimeline: React.FC<PCBTimelineProps> = ({ entries, title, subtitle }) =
               {/* Documents */}
               {selectedEntry.documents && selectedEntry.documents.length > 0 && (
                 <div className="mb-6">
-                  <h3 className="font-jetbrains text-sm font-semibold text-electric-cyan mb-3">Documents</h3>
+                  <h3 className="font-jetbrains text-sm font-semibold text-electric-cyan mb-3">{isTr ? 'Belgeler' : 'Documents'}</h3>
                   <div className="space-y-2">
                     {selectedEntry.documents.map((doc, i) => (
                       <a 
@@ -380,7 +391,7 @@ const PCBTimeline: React.FC<PCBTimelineProps> = ({ entries, title, subtitle }) =
                   className="inline-flex items-center space-x-2 px-4 py-2 bg-electric-cyan/10 text-electric-cyan rounded-lg border border-electric-cyan/30 hover:bg-electric-cyan/20 transition-colors"
                 >
                   <ExternalLink className="w-4 h-4" />
-                  <span className="font-jetbrains text-sm">Visit Project</span>
+                  <span className="font-jetbrains text-sm">{isTr ? 'Projeye Git' : 'Visit Project'}</span>
                 </a>
               )}
             </div>
