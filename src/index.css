@@ -109,9 +109,13 @@
     animation: float 3s ease-in-out infinite;
   }
   
-  /* Text glow effect */
+  /* Text glow effect — neon on dark, disabled on light where it reads as smudge */
   .text-glow {
     text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+  }
+
+  .light .text-glow {
+    text-shadow: none;
   }
   
   /* Image hover effect */
@@ -282,10 +286,10 @@
 
 @keyframes viaPulse {
   0%, 100% {
-    box-shadow: 0 0 5px rgba(34, 211, 238, 0.3);
+    box-shadow: 0 0 5px rgb(var(--electric-cyan) / 0.3);
   }
   50% {
-    box-shadow: 0 0 20px rgba(34, 211, 238, 0.6), 0 0 40px rgba(34, 211, 238, 0.3);
+    box-shadow: 0 0 20px rgb(var(--electric-cyan) / 0.6), 0 0 40px rgb(var(--electric-cyan) / 0.3);
   }
 }
 

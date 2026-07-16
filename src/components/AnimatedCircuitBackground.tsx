@@ -23,8 +23,17 @@ interface Trace {
 const VIEW_W = 1600
 const VIEW_H = 900
 
-// Mostly cyan with occasional blue and rare orange, like signal/power nets on a real board
-const TRACE_COLORS = ['#22d3ee', '#22d3ee', '#22d3ee', '#22d3ee', '#60a5fa', '#60a5fa', '#f97316']
+// Mostly cyan with occasional blue and rare orange, like signal/power nets on a real board.
+// Resolved through theme variables so the traces adapt to light/dark mode.
+const TRACE_COLORS = [
+  'rgb(var(--electric-cyan))',
+  'rgb(var(--electric-cyan))',
+  'rgb(var(--electric-cyan))',
+  'rgb(var(--electric-cyan))',
+  'rgb(var(--neon-blue))',
+  'rgb(var(--neon-blue))',
+  'rgb(var(--cyber-orange))',
+]
 
 // Deterministic PRNG so the board layout is identical on every mount
 const mulberry32 = (seed: number) => () => {
@@ -178,8 +187,8 @@ const AnimatedCircuitBackground: React.FC<AnimatedCircuitBackgroundProps> = ({
         className="absolute inset-0 opacity-[0.05]"
         style={{
           backgroundImage: `
-            linear-gradient(to right, #22d3ee 1px, transparent 1px),
-            linear-gradient(to bottom, #22d3ee 1px, transparent 1px)
+            linear-gradient(to right, rgb(var(--electric-cyan)) 1px, transparent 1px),
+            linear-gradient(to bottom, rgb(var(--electric-cyan)) 1px, transparent 1px)
           `,
           backgroundSize: '50px 50px',
         }}

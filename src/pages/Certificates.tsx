@@ -5,6 +5,7 @@ import { useSettings } from '../context/SettingsContext'
 const Certificates = () => {
   const { lang } = useSettings()
   const isTr = lang === 'tr'
+  const isEs = lang === 'es'
 
   const certificates = [
     {
@@ -180,8 +181,9 @@ const Certificates = () => {
   }
 
   const getStatusLabel = (status: string) => {
-    if (!isTr) return status
-    return status === 'Active' ? 'Aktif' : 'Tamamlandı'
+    if (isTr) return status === 'Active' ? 'Aktif' : 'Tamamlandı'
+    if (isEs) return status === 'Active' ? 'Activo' : 'Completado'
+    return status
   }
 
   const getCategoryColor = (category: string) => {
@@ -219,11 +221,13 @@ const Certificates = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h1 className="font-ibm-plex text-4xl md:text-5xl font-semibold text-cloud-white mb-6">
-              {isTr ? 'Sertifikalar ve Başarılar' : 'Certificates & Achievements'}
+              {isTr ? 'Sertifikalar ve Başarılar' : isEs ? 'Certificados y Logros' : 'Certificates & Achievements'}
             </h1>
             <p className="font-inter text-lg text-text-secondary max-w-3xl mx-auto">
               {isTr
                 ? 'Mühendislik ve teknoloji alanlarında akademik başarı, araştırma katkıları ve profesyonel kazanımlar.'
+                : isEs
+                ? 'Reconocimiento a la excelencia académica, contribuciones a la investigación y logros profesionales en ingeniería y tecnología.'
                 : 'Recognition of academic excellence, research contributions, and professional achievements in engineering and technology fields.'}
             </p>
           </div>
@@ -270,7 +274,7 @@ const Certificates = () => {
           <div className="mb-20">
             <h2 className="font-ibm-plex text-3xl font-semibold text-cloud-white mb-8 flex items-center">
               <Award className="w-8 h-8 text-electric-cyan mr-3" />
-              {isTr ? 'Akademik Başarılar' : 'Academic Achievements'}
+              {isTr ? 'Akademik Başarılar' : isEs ? 'Logros Académicos' : 'Academic Achievements'}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {achievements.map((achievement, index) => (
@@ -300,7 +304,7 @@ const Certificates = () => {
                   <div className="flex items-center space-x-3 mb-4">
                     <Award className="w-8 h-8 text-electric-cyan" />
                     <h2 className="font-ibm-plex text-2xl font-semibold text-cloud-white">
-                      {isTr ? 'Öne Çıkan Başarı: TÜBİTAK 2204-A' : 'Featured Achievement: TÜBİTAK 2204-A'}
+                      {isTr ? 'Öne Çıkan Başarı: TÜBİTAK 2204-A' : isEs ? 'Logro Destacado: TÜBİTAK 2204-A' : 'Featured Achievement: TÜBİTAK 2204-A'}
                     </h2>
                   </div>
                   <p className="font-inter text-text-secondary mb-6 leading-relaxed">
@@ -333,17 +337,19 @@ const Certificates = () => {
           <div className="text-center">
             <div className="project-card p-8">
               <h2 className="font-ibm-plex text-2xl font-semibold text-cloud-white mb-4">
-                {isTr ? 'Başarının Üzerine İnşa Etmek' : 'Building on Success'}
+                {isTr ? 'Başarının Üzerine İnşa Etmek' : isEs ? 'Construyendo sobre el Éxito' : 'Building on Success'}
               </h2>
               <p className="font-inter text-text-secondary mb-6">
                 {isTr
                   ? 'Bu başarılar akademik ve profesyonel yolculuğumun kilometre taşları. Mühendislik ve araştırmada bu çizgiyi sürdürmeye kararlıyım.'
+                  : isEs
+                  ? 'Estos logros representan hitos en mi trayectoria académica y profesional. Estoy comprometido a mantener esta línea de excelencia en ingeniería e investigación.'
                   : "These achievements represent milestones in my academic and professional journey. I'm committed to continuing this trajectory of excellence in engineering and research."}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a href="mailto:baynal@uguremin.com" className="btn-primary group">
                   <Award size={20} className="mr-2 group-hover:scale-110 transition-transform" />
-                  {isTr ? 'Fırsatları Konuşalım' : 'Discuss Opportunities'}
+                  {isTr ? 'Fırsatları Konuşalım' : isEs ? 'Hablemos de Oportunidades' : 'Discuss Opportunities'}
                 </a>
                 <a
                   href="/Uğur-Emin-Baynal-FlowCV-Resume-20260702.pdf"
@@ -351,7 +357,7 @@ const Certificates = () => {
                   className="btn-secondary group"
                 >
                   <Download size={20} className="mr-2 group-hover:scale-110 transition-transform" />
-                  {isTr ? 'CV İndir' : 'Download CV'}
+                  {isTr ? 'CV İndir' : isEs ? 'Descargar CV' : 'Download CV'}
                 </a>
               </div>
             </div>

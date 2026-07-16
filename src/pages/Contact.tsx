@@ -5,24 +5,25 @@ import { useSettings } from '../context/SettingsContext'
 const Contact = () => {
   const { lang } = useSettings()
   const isTr = lang === 'tr'
+  const isEs = lang === 'es'
 
   const contactInfo = [
     {
       icon: Mail,
-      label: isTr ? "E-posta" : "Email",
+      label: isTr ? "E-posta" : isEs ? "Correo" : "Email",
       value: "baynal@uguremin.com",
       link: "mailto:baynal@uguremin.com"
     },
     {
       icon: Phone,
-      label: isTr ? "Telefon" : "Phone",
+      label: isTr ? "Telefon" : isEs ? "Teléfono" : "Phone",
       value: "+90 546 218 9162",
       link: "tel:+905462189162"
     },
     {
       icon: MapPin,
-      label: isTr ? "Konum" : "Location",
-      value: isTr ? "İzmir, Türkiye" : "Izmir, Turkey",
+      label: isTr ? "Konum" : isEs ? "Ubicación" : "Location",
+      value: isTr ? "İzmir, Türkiye" : isEs ? "Esmirna, Turquía" : "Izmir, Turkey",
       link: null
     }
   ]
@@ -49,11 +50,13 @@ const Contact = () => {
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
             <h1 className="font-ibm-plex text-4xl md:text-5xl font-semibold text-cloud-white mb-6">
-              {isTr ? 'İletişime Geç' : 'Get in Touch'}
+              {isTr ? 'İletişime Geç' : isEs ? 'Ponte en Contacto' : 'Get in Touch'}
             </h1>
             <p className="font-inter text-lg text-text-secondary max-w-3xl mx-auto">
               {isTr
                 ? 'Bana ulaşmanın en hızlı yolu e-posta — genellikle bir gün içinde yanıtlarım.'
+                : isEs
+                ? 'La forma más rápida de contactarme es por correo — suelo responder en un día.'
                 : 'The fastest way to reach me is by email — I usually reply within a day.'}
             </p>
           </div>
@@ -62,7 +65,7 @@ const Contact = () => {
             {/* Contact Information */}
             <div className="project-card p-8">
               <h2 className="font-ibm-plex text-2xl font-semibold text-cloud-white mb-6">
-                {isTr ? 'İletişim Bilgileri' : 'Contact Information'}
+                {isTr ? 'İletişim Bilgileri' : isEs ? 'Información de Contacto' : 'Contact Information'}
               </h2>
               <div className="space-y-5">
                 {contactInfo.map((info, index) => (
@@ -89,7 +92,7 @@ const Contact = () => {
 
               <div className="mt-8 pt-6 border-t border-soft-graphite/60">
                 <h3 className="font-ibm-plex text-lg font-semibold text-cloud-white mb-4">
-                  {isTr ? 'Diğer Platformlar' : 'Elsewhere'}
+                  {isTr ? 'Diğer Platformlar' : isEs ? 'Otras Plataformas' : 'Elsewhere'}
                 </h3>
                 <div className="flex space-x-4">
                   {socialLinks.map((social, index) => (
@@ -112,31 +115,33 @@ const Contact = () => {
             <div className="space-y-8">
               <div className="project-card p-8">
                 <h2 className="font-ibm-plex text-2xl font-semibold text-cloud-white mb-6">
-                  {isTr ? 'Müsaitlik Durumu' : 'Current Availability'}
+                  {isTr ? 'Müsaitlik Durumu' : isEs ? 'Disponibilidad Actual' : 'Current Availability'}
                 </h2>
                 <div className="space-y-3">
                   <div className="flex items-center space-x-3">
                     <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-                    <span className="font-inter text-cloud-white">{isTr ? 'Yeni fırsatlara açığım' : 'Open to new opportunities'}</span>
+                    <span className="font-inter text-cloud-white">{isTr ? 'Yeni fırsatlara açığım' : isEs ? 'Abierto a nuevas oportunidades' : 'Open to new opportunities'}</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <div className="w-3 h-3 bg-blue-400 rounded-full animate-pulse"></div>
-                    <span className="font-inter text-cloud-white">{isTr ? 'Araştırma iş birliklerine uygunum' : 'Available for research collaborations'}</span>
+                    <span className="font-inter text-cloud-white">{isTr ? 'Araştırma iş birliklerine uygunum' : isEs ? 'Disponible para colaboraciones de investigación' : 'Available for research collaborations'}</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <div className="w-3 h-3 bg-cyan-400 rounded-full animate-pulse"></div>
-                    <span className="font-inter text-cloud-white">{isTr ? 'Ar-Ge projeleriyle ilgileniyorum' : 'Interested in R&D projects'}</span>
+                    <span className="font-inter text-cloud-white">{isTr ? 'Ar-Ge projeleriyle ilgileniyorum' : isEs ? 'Interesado en proyectos de I+D' : 'Interested in R&D projects'}</span>
                   </div>
                 </div>
               </div>
 
               <div className="project-card p-8">
                 <h2 className="font-ibm-plex text-2xl font-semibold text-cloud-white mb-4">
-                  {isTr ? 'CV İndir' : 'Download CV'}
+                  {isTr ? 'CV İndir' : isEs ? 'Descargar CV' : 'Download CV'}
                 </h2>
                 <p className="font-inter text-text-secondary mb-6">
                   {isTr
                     ? 'Deneyimim, becerilerim ve projelerim hakkında ayrıntılı bilgi edinin.'
+                    : isEs
+                    ? 'Obtén una visión detallada de mi experiencia, habilidades y proyectos.'
                     : 'Get a detailed overview of my experience, skills, and projects.'}
                 </p>
                 <a
@@ -145,7 +150,7 @@ const Contact = () => {
                   className="btn-secondary group w-full"
                 >
                   <Download size={20} className="mr-2 group-hover:scale-110 transition-transform" />
-                  {isTr ? 'Özgeçmişi İndir' : 'Download Resume'}
+                  {isTr ? 'Özgeçmişi İndir' : isEs ? 'Descargar Currículum' : 'Download Resume'}
                 </a>
               </div>
             </div>
@@ -155,21 +160,23 @@ const Contact = () => {
           <div className="mt-16">
             <div className="project-card p-8 text-center">
               <h2 className="font-ibm-plex text-2xl font-semibold text-cloud-white mb-4">
-                {isTr ? 'Birlikte Harika Bir Şeyler İnşa Edelim' : "Let's Build Something Amazing Together"}
+                {isTr ? 'Birlikte Harika Bir Şeyler İnşa Edelim' : isEs ? 'Construyamos Algo Increíble Juntos' : "Let's Build Something Amazing Together"}
               </h2>
               <p className="font-inter text-text-secondary mb-6 max-w-2xl mx-auto">
                 {isTr
                   ? 'İster bir mühendislik iş birliği arıyor olun, ister elektronik ve yapay zekâ uzmanlığına ihtiyacınız olsun, ister yenilikçi Ar-Ge projeleri konuşmak isteyin — fikirlerinizi hayata geçirmek için buradayım.'
+                  : isEs
+                  ? 'Ya sea que busques un colaborador de ingeniería, necesites experiencia en electrónica e IA, o quieras hablar de proyectos innovadores de I+D — estoy aquí para dar vida a tus ideas.'
                   : "Whether you're looking for an engineering collaborator, need expertise in electronics and AI, or want to discuss innovative R&D projects, I'm here to help bring your ideas to life."}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a href="mailto:baynal@uguremin.com" className="btn-primary group">
                   <Mail size={20} className="mr-2 group-hover:scale-110 transition-transform" />
-                  {isTr ? 'E-posta Gönder' : 'Send Email'}
+                  {isTr ? 'E-posta Gönder' : isEs ? 'Enviar Correo' : 'Send Email'}
                 </a>
                 <a href="tel:+905462189162" className="btn-secondary group">
                   <Phone size={20} className="mr-2 group-hover:scale-110 transition-transform" />
-                  {isTr ? 'Hemen Ara' : 'Call Now'}
+                  {isTr ? 'Hemen Ara' : isEs ? 'Llamar Ahora' : 'Call Now'}
                 </a>
               </div>
             </div>

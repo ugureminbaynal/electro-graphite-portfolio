@@ -1,7 +1,9 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 
 export type Theme = 'dark' | 'light'
-export type Lang = 'en' | 'tr'
+export type Lang = 'en' | 'tr' | 'es'
+
+const LANG_CYCLE: Lang[] = ['en', 'tr', 'es']
 
 interface Settings {
   theme: Theme
@@ -21,9 +23,10 @@ export const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   const [theme, setTheme] = useState<Theme>(
     () => (localStorage.getItem('theme') as Theme) || 'dark'
   )
-  const [lang, setLang] = useState<Lang>(
-    () => (localStorage.getItem('lang') as Lang) || 'en'
-  )
+  const [lang, setLang] = useState<Lang>(() => {
+    const stored = localStorage.getItem('lang') as Lang | null
+    return stored && LANG_CYCLE.includes(stored) ? stored : 'en'
+  })
 
   useEffect(() => {
     document.documentElement.classList.toggle('light', theme === 'light')
@@ -36,7 +39,8 @@ export const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   }, [lang])
 
   const toggleTheme = () => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))
-  const toggleLang = () => setLang((l) => (l === 'en' ? 'tr' : 'en'))
+  const toggleLang = () =>
+    setLang((l) => LANG_CYCLE[(LANG_CYCLE.indexOf(l) + 1) % LANG_CYCLE.length])
 
   return (
     <SettingsContext.Provider value={{ theme, lang, toggleTheme, toggleLang }}>

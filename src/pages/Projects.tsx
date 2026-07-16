@@ -6,6 +6,7 @@ import { useSettings } from '../context/SettingsContext'
 const Projects = () => {
   const { lang } = useSettings()
   const isTr = lang === 'tr'
+  const isEs = lang === 'es'
 
   const projects = [
     {
@@ -300,9 +301,11 @@ const Projects = () => {
         <div className="max-w-7xl mx-auto">
           <PCBTimeline
             entries={projects}
-            title={isTr ? "Projeler ve Araştırma" : "Projects & Research"}
+            title={isTr ? "Projeler ve Araştırma" : isEs ? "Proyectos e Investigación" : "Projects & Research"}
             subtitle={isTr
               ? "Elektronik, robotik ve yapay zekâ alanlarındaki uzmanlığı yansıtan yenilikçi mühendislik projeleri, araştırma girişimleri ve yarışma çalışmaları."
+              : isEs
+              ? "Una colección de proyectos de ingeniería innovadores, iniciativas de investigación y participaciones en competiciones que muestran experiencia en electrónica, robótica e inteligencia artificial."
               : "A collection of innovative engineering projects, research initiatives, and competition entries showcasing expertise in electronics, robotics, and artificial intelligence."}
           />
 
@@ -310,16 +313,18 @@ const Projects = () => {
           <div className="mt-20 text-center">
             <div className="project-card p-8">
               <h2 className="font-ibm-plex text-2xl font-semibold text-cloud-white mb-4">
-                {isTr ? 'İş Birliği Yapmak İster misiniz?' : 'Interested in Collaborating?'}
+                {isTr ? 'İş Birliği Yapmak İster misiniz?' : isEs ? '¿Te interesa colaborar?' : 'Interested in Collaborating?'}
               </h2>
               <p className="font-inter text-text-secondary mb-6">
                 {isTr
                   ? 'Yeni mühendislik zorluklarına ve araştırma fırsatlarına her zaman açığım. Yenilikçi projelerde nasıl birlikte çalışabileceğimizi konuşalım.'
+                  : isEs
+                  ? 'Siempre estoy abierto a nuevos retos de ingeniería y oportunidades de investigación. Hablemos de cómo podemos trabajar juntos en proyectos innovadores.'
                   : "I'm always open to new engineering challenges and research opportunities. Let's discuss how we can work together on innovative projects."}
               </p>
               <a href="mailto:baynal@uguremin.com" className="btn-primary group inline-flex items-center">
                 <Mail size={20} className="mr-2 group-hover:scale-110 transition-transform" />
-                {isTr ? 'Proje Başlat' : 'Start a Project'}
+                {isTr ? 'Proje Başlat' : isEs ? 'Iniciar un Proyecto' : 'Start a Project'}
               </a>
             </div>
           </div>

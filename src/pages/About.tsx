@@ -5,6 +5,7 @@ import { useSettings } from '../context/SettingsContext'
 const About = () => {
   const { lang } = useSettings()
   const isTr = lang === 'tr'
+  const isEs = lang === 'es'
 
   const education = [
     {
@@ -112,11 +113,11 @@ const About = () => {
     : ["Communication", "Organisation", "Creativity", "Teaching Skills", "Teamwork", "Problem-Solving", "Project Management"]
 
   const languages = [
-    { name: isTr ? "Türkçe" : "Turkish", level: isTr ? "Ana dil" : "Native" },
-    { name: isTr ? "İngilizce" : "English", level: isTr ? "Akıcı" : "Fluent" },
-    { name: isTr ? "İspanyolca" : "Spanish", level: isTr ? "Başlangıç" : "Beginner" },
-    { name: isTr ? "Almanca" : "German", level: isTr ? "Başlangıç" : "Beginner" },
-    { name: isTr ? "Latince" : "Latin", level: isTr ? "Başlangıç" : "Beginner" }
+    { name: isTr ? "Türkçe" : isEs ? "Turco" : "Turkish", level: isTr ? "Ana dil" : isEs ? "Nativo" : "Native" },
+    { name: isTr ? "İngilizce" : isEs ? "Inglés" : "English", level: isTr ? "Akıcı" : isEs ? "Fluido" : "Fluent" },
+    { name: isTr ? "İspanyolca" : isEs ? "Español" : "Spanish", level: isTr ? "Başlangıç" : isEs ? "Principiante" : "Beginner" },
+    { name: isTr ? "Almanca" : isEs ? "Alemán" : "German", level: isTr ? "Başlangıç" : isEs ? "Principiante" : "Beginner" },
+    { name: isTr ? "Latince" : isEs ? "Latín" : "Latin", level: isTr ? "Başlangıç" : isEs ? "Principiante" : "Beginner" }
   ]
 
   const courses = [
@@ -199,11 +200,13 @@ const About = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h1 className="font-ibm-plex text-4xl md:text-5xl font-semibold text-cloud-white mb-6">
-              {isTr ? 'Ben Kimim?' : 'Who Am I?'}
+              {isTr ? 'Ben Kimim?' : isEs ? '¿Quién Soy?' : 'Who Am I?'}
             </h1>
             <p className="font-inter text-lg text-text-secondary max-w-3xl mx-auto">
               {isTr
-                ? 'Mühendis, eğitmen, kokteyl bilimcisi ve mahallenin dost canlısı Spider-Man hayranı. İşte özgeçmişin arkasındaki hikâye.'
+                ? 'Mühendis, eğitmen, kokteyl meraklısı ve mahallenin dost canlısı Spider-Man hayranı. CV\'nin anlatmadığı hikâye burada.'
+                : isEs
+                ? 'Ingeniero, profesor, científico de cócteles y fan del amistoso Spider-Man del barrio. Esta es la historia que el CV no cuenta.'
                 : "Engineer, teacher, cocktail scientist, and friendly neighborhood Spider-Man fan. Here's the story behind the resume."}
             </p>
           </div>
@@ -216,34 +219,35 @@ const About = () => {
                 {isTr ? (
                   <>
                     <p>
-                      <span className="text-cloud-white">Ankara</span>'da, Gazi Anadolu Lisesi'nin
-                      sayısal bölümünde büyüdüm — <span className="text-electric-cyan">%93,04</span> ile
-                      mezun olan ama sınıfın dışında da en az o kadar şey öğrenen bir öğrenciydim. Beş
-                      yıl boyunca <span className="text-cloud-white">Model Birleşmiş Milletler</span>'i
-                      yaşadım ve soludum; heyecandan titreyen bir Delege'den Genel Sekreterliğe kadar
-                      yükseldim. Bir salonun karşısına geçip karmaşık bir konuyu anlaşılır kılmanın
-                      doğuştan gelen bir yetenek değil, inşa edilen bir beceri olduğunu orada öğrendim.
-                      O günden beri yaptığım her şeyi bu şekillendirdi.
+                      <span className="text-cloud-white">Ankara</span>'da büyüdüm; liseyi Gazi Anadolu
+                      Lisesi'nde, sayısal bölümde okudum. <span className="text-electric-cyan">%93,04</span>'lük
+                      bir dereceyle mezun oldum ama asıl dersleri sınıfın dışında aldım. Beş yılımı{' '}
+                      <span className="text-cloud-white">Model Birleşmiş Milletler</span>'e verdim —
+                      kürsüye çıkmaya çekinen bir delegeden Genel Sekreterliğe uzanan bir yol. Kalabalık
+                      bir salona karmaşık bir meseleyi anlatabilmenin doğuştan gelen bir yetenek değil,
+                      sabırla örülen bir beceri olduğunu orada öğrendim. O gün bugündür yaptığım her
+                      işin içinde o sahnenin izi var.
                     </p>
                     <p>
-                      2021'de Elektrik-Elektronik Mühendisliği okumak için{' '}
-                      <span className="text-cloud-white">İzmir</span>'e geldim. Bir yılın sonunda tek
-                      mühendislik diploması yetmedi —{' '}
+                      2021'de <span className="text-cloud-white">İzmir</span>'in yolunu tuttum; İzmir
+                      Ekonomi Üniversitesi'nde Elektrik-Elektronik Mühendisliği'ne başladım. Daha ilk
+                      yılın sonunda tek diploma bana dar geldi,{' '}
                       <span className="text-cloud-white">Bilgisayar Mühendisliği</span>'ni çift anadal
-                      olarak ekledim. Donanım ile yazılım sürekli tartışır; ben bu sohbetin iki
-                      tarafında da akıcı olmayı seviyorum: roketler ve keşif araçları için PCB
-                      tasarladım, enerji verimli araçlar için gömülü yazılım yazdım, otomatik tarım
-                      sistemleri için Çoklu-Ajan LLM iş akışları kurdum.
+                      olarak yanına ekledim. Donanımla yazılım, durmadan birbiriyle tartışan iki kardeş
+                      gibidir; ben ikisinin de dilinden anlamayı seviyorum. Roketler ve keşif araçları
+                      için devre kartları çizdim, enerji verimli araçlara gömülü yazılımlar yazdım,
+                      topraksız tarım için Çoklu-Ajan LLM iş akışları kurdum.
                     </p>
                     <p>
-                      MUN'un izi hiç silinmedi — sadece kostüm değiştirdi.{' '}
-                      <span className="text-cloud-white">Özel ders verdim, asistanlık yaptım, atölyeler
-                      ve video dersler anlattım</span>; şimdi de IEEE IEU'da robotik etkinlikleri
-                      yönetiyorum. Bir şeyi en iyi, anlatmak zorunda kaldığımda anlıyorum; bu yüzden
-                      öğretmek benim için ek iş değil, beynimin çalışma şekli.
+                      MUN'da başlayan hikâye hiç bitmedi; yalnızca kılık değiştirdi.{' '}
+                      <span className="text-cloud-white">Özel dersler verdim, laboratuvarlarda
+                      asistanlık yaptım, atölyeler düzenledim, video dersler çektim</span>; bugün de
+                      IEEE IEU'da robotik etkinlikler yürütüyorum. Bir konuyu gerçekten anlamamın yolu
+                      onu birine anlatmaktan geçiyor — o yüzden öğretmek benim için ek bir iş değil,
+                      düşünme biçimim.
                     </p>
                     <p>
-                      Mesai dışında{' '}
+                      İşten arta kalan zamanlardaysa{' '}
                       <a
                         href="https://distillersalgorithm.uguremin.com"
                         target="_blank"
@@ -252,26 +256,94 @@ const About = () => {
                       >
                         The Distiller's Algorithm
                       </a>
-                      'ı yürütüyorum — kokteyl tariflerini ve bar tekniklerini laboratuvar raporu
-                      titizliğiyle belgelediğim bir site.
+                      'i yazıyorum: kokteyl tariflerini ve bar tekniklerini, laboratuvar raporu yazar
+                      gibi titizlikle kayda geçirdiğim bir site.
                     </p>
                     <p>
-                      Ve evet — mezuniyette sırt çantamdan bakan bir{' '}
-                      <span className="text-cloud-white">Spider-Man maskesi</span> o. Maske sadece
-                      büyük günlerde çıkıyor; her gün taşıdığım şey ise arkasındaki fikir. Ağ atmayı
-                      bir kenara bırakın; Peter Parker aslında kimsenin alkışlamadığı darbeler alan bir
-                      öğrencidir — kira, gece vardiyaları, sınavlar, tekrar. O hikâyeyi içeriden
-                      bilirim: bir dönem <span className="text-cloud-white">evim yoktu</span>; çift
-                      anadal mühendisliğin üstüne part-time işler istifledim ve ikisini de elimden
-                      bırakmadım.
+                      Ve evet — mezuniyet fotoğrafında sırt çantamdan bakan bir{' '}
+                      <span className="text-cloud-white">Spider-Man maskesi</span> var. Onu her yere
+                      taşımıyorum; maske yalnızca büyük günlerde ortaya çıkıyor. Her gün yanımda
+                      taşıdığımsa onun temsil ettiği şey. Ağları, kostümü bir kenara koyun; Peter
+                      Parker aslında kimsenin görmediği yerlerde darbe yiyen bir öğrencidir — kira
+                      derdi, gece vardiyaları, sınavlar ve her seferinde yeniden ayağa kalkmak. O
+                      hayatı ben de bilirim: bir dönem{' '}
+                      <span className="text-cloud-white">başımı sokacak bir evim yoktu</span>; çift
+                      anadalın üzerine part-time işleri üst üste koydum ve ikisinden de vazgeçmedim.
                     </p>
                     <blockquote className="border-l-2 border-electric-cyan/60 pl-5 py-1 font-jetbrains text-cloud-white/90 italic">
-                      "Ama her şeye rağmen Spider-Man olmayı hâlâ seviyorum. Kim sevmez ki? Kaç darbe
-                      alırsam alayım, her seferinde geri dönmenin bir yolunu buluyorum."
+                      "Ama her şeye rağmen Spider-Man olmayı hâlâ seviyorum. Kim sevmez ki? O yüzden
+                      kaç darbe alırsam alayım, geri dönmenin bir yolunu hep buluyorum."
                     </blockquote>
                     <p>
-                      O zaman pes etmedim. Şimdi başlamaya da niyetim yok. Kostümün bana en çok uyan
-                      parçası bu — hayat sallamaya devam ediyor, ben de.
+                      O zaman pes etmedim, şimdi de etmeye niyetim yok. Kostümün bana en iyi oturan
+                      parçası da bu — hayat yumruk sallamaya devam ettikçe ben de sallanmaya devam
+                      ediyorum.
+                    </p>
+                  </>
+                ) : isEs ? (
+                  <>
+                    <p>
+                      Crecí en <span className="text-cloud-white">Ankara</span> y cursé el bachillerato
+                      de ciencias en el Instituto Anatolio Gazi. Me gradué con un{' '}
+                      <span className="text-electric-cyan">93,04 %</span>, aunque las lecciones más
+                      importantes las aprendí fuera del aula. Le dediqué cinco años al{' '}
+                      <span className="text-cloud-white">Modelo de Naciones Unidas</span>: un camino que
+                      empezó con un delegado que temía subir al estrado y terminó en la Secretaría
+                      General. Allí aprendí que explicar algo complejo ante una sala llena no es un
+                      talento de nacimiento, sino una habilidad que se construye con paciencia. Desde
+                      entonces, hay algo de aquel escenario en todo lo que hago.
+                    </p>
+                    <p>
+                      En 2021 me mudé a <span className="text-cloud-white">Esmirna</span> para estudiar
+                      Ingeniería Eléctrica y Electrónica en la Universidad de Economía de Izmir. Al
+                      final del primer año un solo título me quedaba pequeño, así que sumé{' '}
+                      <span className="text-cloud-white">Ingeniería Informática</span> como doble
+                      titulación. El hardware y el software son como dos hermanos que discuten sin
+                      parar; a mí me gusta hablar el idioma de los dos: he diseñado placas para cohetes
+                      y róveres, escrito firmware para vehículos de bajo consumo y montado flujos de
+                      trabajo de LLM multiagente para agricultura sin suelo.
+                    </p>
+                    <p>
+                      La historia que empezó en el MUN nunca terminó; solo se cambió de disfraz.{' '}
+                      <span className="text-cloud-white">He dado clases particulares, he sido asistente
+                      de laboratorio, he impartido talleres y cursos en vídeo</span>, y hoy coordino
+                      actividades de robótica en IEEE IEU. Solo entiendo algo de verdad cuando tengo que
+                      explicárselo a alguien; por eso enseñar no es un trabajo extra: es mi manera de
+                      pensar.
+                    </p>
+                    <p>
+                      En mi tiempo libre escribo{' '}
+                      <a
+                        href="https://distillersalgorithm.uguremin.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-electric-cyan hover:underline"
+                      >
+                        The Distiller's Algorithm
+                      </a>
+                      : un sitio donde documento recetas de cócteles y técnicas de bar con el mismo
+                      rigor que un informe de laboratorio.
+                    </p>
+                    <p>
+                      Y sí: en la foto de graduación hay una{' '}
+                      <span className="text-cloud-white">máscara de Spider-Man</span> asomando de mi
+                      mochila. No la llevo a todas partes; solo sale en los días importantes. Lo que sí
+                      llevo cada día es lo que representa. Olvídate de las telarañas y del traje: Peter
+                      Parker es, en el fondo, un estudiante que encaja golpes donde nadie lo ve — el
+                      alquiler, los turnos de noche, los exámenes y volver a levantarse una y otra vez.
+                      Esa vida también la conozco: hubo una época en la que{' '}
+                      <span className="text-cloud-white">no tenía un techo propio</span>; acumulé
+                      trabajos a tiempo parcial encima de una doble titulación de ingeniería y no solté
+                      ninguna de las dos cosas.
+                    </p>
+                    <blockquote className="border-l-2 border-electric-cyan/60 pl-5 py-1 font-jetbrains text-cloud-white/90 italic">
+                      "Pero después de todo, todavía me encanta ser Spider-Man. ¿A quién no le
+                      encantaría? Así que, por muchos golpes que reciba, siempre encuentro la manera de
+                      volver."
+                    </blockquote>
+                    <p>
+                      No me rendí entonces y no pienso empezar ahora. Esa es la parte del traje que
+                      mejor me queda: mientras la vida siga lanzando golpes, yo seguiré columpiándome.
                     </p>
                   </>
                 ) : (
@@ -338,16 +410,16 @@ const About = () => {
                 {/* Quick facts */}
                 <div className="flex flex-wrap gap-2 pt-2">
                   <span className="px-3 py-1 bg-electric-cyan/10 border border-electric-cyan/30 text-electric-cyan text-xs font-jetbrains rounded-full">
-                    {isTr ? '🕷️ Mahallenin dost canlısı mühendisi' : '🕷️ Friendly neighborhood engineer'}
+                    {isTr ? '🕷️ Mahallenin dost canlısı mühendisi' : isEs ? '🕷️ Ingeniero amigable del barrio' : '🕷️ Friendly neighborhood engineer'}
                   </span>
                   <span className="px-3 py-1 bg-neon-blue/10 border border-neon-blue/30 text-neon-blue text-xs font-jetbrains rounded-full">
-                    {isTr ? '🎤 Eski MUN Genel Sekreteri' : '🎤 Ex-MUN Secretary-General'}
+                    {isTr ? '🎤 Eski MUN Genel Sekreteri' : isEs ? '🎤 Ex Secretario General de MUN' : '🎤 Ex-MUN Secretary-General'}
                   </span>
                   <span className="px-3 py-1 bg-cyber-orange/10 border border-cyber-orange/30 text-cyber-orange text-xs font-jetbrains rounded-full">
-                    {isTr ? '🍸 Kokteyl bilimcisi' : '🍸 Cocktail scientist'}
+                    {isTr ? '🍸 Kokteyl bilimcisi' : isEs ? '🍸 Científico de cócteles' : '🍸 Cocktail scientist'}
                   </span>
                   <span className="px-3 py-1 bg-green-400/10 border border-green-400/30 text-green-400 text-xs font-jetbrains rounded-full">
-                    {isTr ? '📚 Her şeyi öğretir' : '📚 Teaches everything'}
+                    {isTr ? '📚 Anlatmadan duramaz' : isEs ? '📚 No puede evitar explicar' : '📚 Teaches everything'}
                   </span>
                 </div>
               </div>
@@ -359,12 +431,14 @@ const About = () => {
                     src="/assets/images/ugur-graduation.jpg"
                     alt={isTr
                       ? 'Uğur Emin Baynal mezuniyette, cübbesiyle; sırt çantasından bir Spider-Man maskesi bakıyor'
+                      : isEs
+                      ? 'Uğur Emin Baynal en su graduación, con toga; una máscara de Spider-Man asoma de su mochila'
                       : 'Uğur Emin Baynal at graduation, in cap and gown, with a Spider-Man mask peeking out of his backpack'}
                     className="w-full rounded-lg"
                     loading="lazy"
                   />
                   <figcaption className="font-jetbrains text-xs text-text-muted mt-3 px-1 text-center">
-                    {isTr ? 'Mezuniyet günü, 2026 — maske de geldi.' : 'Graduation day, 2026 — the mask came too.'}
+                    {isTr ? 'Mezuniyet günü, 2026 — maske de geldi.' : isEs ? 'Día de graduación, 2026 — la máscara también vino.' : 'Graduation day, 2026 — the mask came too.'}
                   </figcaption>
                 </figure>
               </div>
@@ -375,7 +449,7 @@ const About = () => {
           <div className="mb-20">
             <h2 className="font-ibm-plex text-3xl font-semibold text-cloud-white mb-8 flex items-center">
               <GraduationCap className="w-8 h-8 text-electric-cyan mr-3" />
-              {isTr ? 'Eğitim' : 'Education'}
+              {isTr ? 'Eğitim' : isEs ? 'Educación' : 'Education'}
             </h2>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               {education.map((edu, index) => (
@@ -398,7 +472,7 @@ const About = () => {
           <div className="mb-20">
             <h2 className="font-ibm-plex text-3xl font-semibold text-cloud-white mb-8 flex items-center">
               <BookMarked className="w-8 h-8 text-electric-cyan mr-3" />
-              {isTr ? 'Öne Çıkan Dersler' : 'Notable Courses'}
+              {isTr ? 'Öne Çıkan Dersler' : isEs ? 'Cursos Destacados' : 'Notable Courses'}
             </h2>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               {courses.map((course, index) => (
@@ -424,7 +498,7 @@ const About = () => {
           <div className="mb-20">
             <h2 className="font-ibm-plex text-3xl font-semibold text-cloud-white mb-8 flex items-center">
               <Briefcase className="w-8 h-8 text-electric-cyan mr-3" />
-              {isTr ? 'Profesyonel Deneyim' : 'Professional Experience'}
+              {isTr ? 'Profesyonel Deneyim' : isEs ? 'Experiencia Profesional' : 'Professional Experience'}
             </h2>
             <div className="space-y-6">
               {experience.map((exp, index) => (
@@ -451,12 +525,12 @@ const About = () => {
           <div className="mb-20">
             <h2 className="font-ibm-plex text-3xl font-semibold text-cloud-white mb-8 flex items-center">
               <BookOpen className="w-8 h-8 text-electric-cyan mr-3" />
-              {isTr ? 'Beceriler' : 'Skills'}
+              {isTr ? 'Beceriler' : isEs ? 'Habilidades' : 'Skills'}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
                 <h3 className="font-jetbrains text-xl font-semibold text-electric-cyan mb-4">
-                  {isTr ? 'Teknik Beceriler' : 'Technical Skills'}
+                  {isTr ? 'Teknik Beceriler' : isEs ? 'Habilidades Técnicas' : 'Technical Skills'}
                 </h3>
                 <div className="grid grid-cols-2 gap-3">
                   {skills.map((skill, index) => (
@@ -469,7 +543,7 @@ const About = () => {
               </div>
               <div>
                 <h3 className="font-jetbrains text-xl font-semibold text-electric-cyan mb-4">
-                  {isTr ? 'Kişisel Beceriler' : 'Soft Skills'}
+                  {isTr ? 'Kişisel Beceriler' : isEs ? 'Habilidades Personales' : 'Soft Skills'}
                 </h3>
                 <div className="grid grid-cols-2 gap-3">
                   {softSkills.map((skill, index) => (
@@ -486,7 +560,7 @@ const About = () => {
           <div className="mb-20">
             <h2 className="font-ibm-plex text-3xl font-semibold text-cloud-white mb-8 flex items-center">
               <Languages className="w-8 h-8 text-electric-cyan mr-3" />
-              {isTr ? 'Diller' : 'Languages'}
+              {isTr ? 'Diller' : isEs ? 'Idiomas' : 'Languages'}
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
               {languages.map((language, index) => (
@@ -504,7 +578,7 @@ const About = () => {
           <div className="mb-20">
             <h2 className="font-ibm-plex text-3xl font-semibold text-cloud-white mb-8 flex items-center">
               <Users className="w-8 h-8 text-electric-cyan mr-3" />
-              {isTr ? 'Topluluklar ve Liderlik' : 'Organizations & Leadership'}
+              {isTr ? 'Topluluklar ve Liderlik' : isEs ? 'Organizaciones y Liderazgo' : 'Organizations & Leadership'}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {organizations.map((org, index) => (
@@ -523,17 +597,19 @@ const About = () => {
           <div className="text-center">
             <div className="project-card p-8">
               <h2 className="font-ibm-plex text-2xl font-semibold text-cloud-white mb-4">
-                {isTr ? 'Birlikte Çalışalım mı?' : 'Ready to Collaborate?'}
+                {isTr ? 'Birlikte Çalışalım mı?' : isEs ? '¿Colaboramos?' : 'Ready to Collaborate?'}
               </h2>
               <p className="font-inter text-text-secondary mb-6">
                 {isTr
                   ? 'Yenilikçi mühendislik projeleri ve son teknoloji Ar-Ge çözümleri üzerinde birlikte çalışalım.'
+                  : isEs
+                  ? 'Trabajemos juntos en proyectos de ingeniería innovadores y soluciones de I+D de vanguardia.'
                   : "Let's work together on innovative engineering projects and cutting-edge R&D solutions."}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a href="mailto:baynal@uguremin.com" className="btn-primary group">
                   <Mail size={20} className="mr-2 group-hover:scale-110 transition-transform" />
-                  {isTr ? 'Bana Ulaş' : 'Contact Me'}
+                  {isTr ? 'Bana Ulaş' : isEs ? 'Contáctame' : 'Contact Me'}
                 </a>
                 <a
                   href="/Uğur-Emin-Baynal-FlowCV-Resume-20260702.pdf"
@@ -541,7 +617,7 @@ const About = () => {
                   className="btn-secondary group"
                 >
                   <Download size={20} className="mr-2 group-hover:scale-110 transition-transform" />
-                  {isTr ? 'CV İndir' : 'Download CV'}
+                  {isTr ? 'CV İndir' : isEs ? 'Descargar CV' : 'Download CV'}
                 </a>
               </div>
             </div>

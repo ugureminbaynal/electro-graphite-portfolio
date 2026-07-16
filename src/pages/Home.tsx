@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Sparkles, Mail, Download, Code, Database, Linkedin, Instagram, CircuitBoard, Brain, Radio, Recycle, ExternalLink } from 'lucide-react'
 import { useSettings } from '../context/SettingsContext'
+import ThemedLogo from '../components/ThemedLogo'
 
 // Returns the correct English indefinite article ("a" or "an") for a given phrase.
 // Handles common edge cases like acronyms (MBA, R&D), silent-h (hour, honest), and
@@ -59,32 +60,33 @@ const Home = () => {
   const [isVisible, setIsVisible] = useState(false)
   const { lang } = useSettings()
   const isTr = lang === 'tr'
+  const isEs = lang === 'es'
 
-  // `title` builds the English "I am a/an …" sentence; `tr` is a complete Turkish sentence
-  // because Turkish expresses tense/person with suffixes on the noun itself.
+  // `title` builds the English "I am a/an …" sentence; `tr`/`es` are complete sentences
+  // because those languages express tense/person differently.
   const roles = [
-    { title: "Software Development Specialist", tr: "Yazılım Geliştirme Uzmanıyım", current: true },
-    { title: "Electrical & Electronics Engineer", tr: "Elektrik-Elektronik Mühendisiyim", current: true },
-    { title: "Computer Engineer", tr: "Bilgisayar Mühendisiyim", current: true },
-    { title: "IEEE IEU Consultant", tr: "IEEE IEU Danışmanıyım", current: true },
-    { title: "Engineering Tutor", tr: "Mühendislik Eğitmeniyim", current: true },
-    { title: "Engineering Instructor", tr: "Mühendislik Dersleri Eğitmeniydim", current: false },
+    { title: "Software Development Specialist", tr: "Yazılım Geliştirme Uzmanıyım", es: "Soy Especialista en Desarrollo de Software", current: true },
+    { title: "Electrical & Electronics Engineer", tr: "Elektrik-Elektronik Mühendisiyim", es: "Soy Ingeniero Electrónico", current: true },
+    { title: "Computer Engineer", tr: "Bilgisayar Mühendisiyim", es: "Soy Ingeniero Informático", current: true },
+    { title: "IEEE IEU Consultant", tr: "IEEE IEU Danışmanıyım", es: "Soy Consultor de IEEE IEU", current: true },
+    { title: "Engineering Tutor", tr: "Mühendislik Eğitmeniyim", es: "Soy Tutor de Ingeniería", current: true },
+    { title: "Engineering Instructor", tr: "Mühendislik Dersleri Eğitmeniydim", es: "Fui Instructor de Ingeniería", current: false },
   ]
 
   const skills = [
-    { name: "MATLAB/Simulink", icon: Brain, color: "text-blue-400", category: isTr ? "Mühendislik" : "Engineering" },
-    { name: "Python", icon: Code, color: "text-green-400", category: isTr ? "Programlama" : "Programming" },
-    { name: "OrCAD/KiCAD", icon: CircuitBoard, color: "text-orange-400", category: isTr ? "Elektronik" : "Electronics" },
-    { name: "Java", icon: Code, color: "text-cyan-400", category: isTr ? "Programlama" : "Programming" },
-    { name: "ROS 2", icon: Radio, color: "text-blue-500", category: isTr ? "Robotik" : "Robotics" },
-    { name: "SQL", icon: Database, color: "text-purple-400", category: isTr ? "Veritabanı" : "Database" }
+    { name: "MATLAB/Simulink", icon: Brain, color: "text-blue-400", category: isTr ? "Mühendislik" : isEs ? "Ingeniería" : "Engineering" },
+    { name: "Python", icon: Code, color: "text-green-400", category: isTr ? "Programlama" : isEs ? "Programación" : "Programming" },
+    { name: "OrCAD/KiCAD", icon: CircuitBoard, color: "text-orange-400", category: isTr ? "Elektronik" : isEs ? "Electrónica" : "Electronics" },
+    { name: "Java", icon: Code, color: "text-cyan-400", category: isTr ? "Programlama" : isEs ? "Programación" : "Programming" },
+    { name: "ROS 2", icon: Radio, color: "text-blue-500", category: isTr ? "Robotik" : isEs ? "Robótica" : "Robotics" },
+    { name: "SQL", icon: Database, color: "text-purple-400", category: isTr ? "Veritabanı" : isEs ? "Bases de Datos" : "Database" }
   ]
 
   const stats = [
-    { number: "3.17", label: isTr ? "EE Not Ortalaması" : "EE GPA" },
-    { number: "EE+CE", label: isTr ? "Çift Anadal" : "Double Major" },
-    { number: "93.04%", label: isTr ? "Lise Diploma Notu" : "High School Score" },
-    { number: "5", label: isTr ? "Dil" : "Languages" }
+    { number: "3.17", label: isTr ? "EE Not Ortalaması" : isEs ? "Promedio en EE" : "EE GPA" },
+    { number: "EE+CE", label: isTr ? "Çift Anadal" : isEs ? "Doble Titulación" : "Double Major" },
+    { number: "93.04%", label: isTr ? "Lise Diploma Notu" : isEs ? "Nota de Bachillerato" : "High School Score" },
+    { number: "5", label: isTr ? "Dil" : isEs ? "Idiomas" : "Languages" }
   ]
 
   useEffect(() => {
@@ -113,20 +115,20 @@ const Home = () => {
               <div className="flex items-center space-x-2">
                 <Sparkles className="w-5 h-5 text-electric-cyan" />
                 <span className="font-inter text-sm text-electric-cyan uppercase tracking-wider">
-                  {isTr ? 'Portfolyoma hoş geldiniz' : 'Welcome to my portfolio'}
+                  {isTr ? 'Portfolyoma hoş geldiniz' : isEs ? 'Bienvenido a mi portafolio' : 'Welcome to my portfolio'}
                 </span>
               </div>
 
               {/* Main Headline */}
               <h1 className="font-ibm-plex text-5xl md:text-6xl lg:text-7xl font-bold text-cloud-white leading-tight">
-                {isTr ? <>Merhaba, ben <span className="text-electric-cyan">Uğur</span></> : <>Hi, I'm <span className="text-electric-cyan">Uğur</span></>}
+                {isTr ? <>Merhaba, ben <span className="text-electric-cyan">Uğur</span></> : isEs ? <>Hola, soy <span className="text-electric-cyan">Uğur</span></> : <>Hi, I'm <span className="text-electric-cyan">Uğur</span></>}
               </h1>
 
               {/* Role carousel with I am/I was */}
               <div className="min-h-16 flex items-center">
                 <h2 className="font-jetbrains text-xl md:text-3xl text-text-secondary">
-                  {isTr ? (
-                    <span className="text-electric-cyan font-semibold">{roles[currentText].tr}</span>
+                  {isTr || isEs ? (
+                    <span className="text-electric-cyan font-semibold">{isTr ? roles[currentText].tr : roles[currentText].es}</span>
                   ) : (
                     <>
                       {roles[currentText].current ? "I am" : "I was"} {getIndefiniteArticleFor(roles[currentText].title)}{' '}
@@ -142,6 +144,8 @@ const Home = () => {
               <p className="font-inter text-lg text-text-secondary max-w-lg leading-relaxed">
                 {isTr
                   ? 'İzmir Ekonomi Üniversitesi\'nde Elektrik-Elektronik Mühendisliği ve Bilgisayar Mühendisliği çift anadal son sınıf öğrencisiyim. Elektroniğin yapay zekâyla buluştuğu yerde çalışıyorum — gömülü sistemlerden robotiğe ve Çoklu-Ajan LLM iş akışlarına. Şu anda İEÜ\'de Yazılım Geliştirme Uzmanı olarak görev yapıyorum.'
+                  : isEs
+                  ? 'Estudiante de último año de doble titulación en Ingeniería Eléctrica y Electrónica e Ingeniería Informática en la Universidad de Economía de Izmir. Trabajo donde la electrónica se encuentra con la IA — desde sistemas embebidos y robótica hasta flujos de trabajo de LLM multiagente — actualmente como Especialista en Desarrollo de Software en la IUE.'
                   : 'Final-year double major in Electrical & Electronics and Computer Engineering at Izmir University of Economics. I work where electronics meets AI — from embedded systems and robotics to Multi-Agent LLM workflows — currently as a Software Development Specialist at IUE.'}
               </p>
 
@@ -160,7 +164,7 @@ const Home = () => {
                 <Link to="/contact">
                   <button className="btn-primary group">
                     <Mail size={20} className="mr-2 group-hover:scale-110 transition-transform" />
-                    {isTr ? 'İletişime Geç' : 'Get in Touch'}
+                    {isTr ? 'İletişime Geç' : isEs ? 'Contáctame' : 'Get in Touch'}
                   </button>
                 </Link>
                 <a
@@ -169,7 +173,7 @@ const Home = () => {
                   className="btn-secondary group"
                 >
                   <Download size={20} className="mr-2 group-hover:scale-110 transition-transform" />
-                  {isTr ? 'CV İndir' : 'Download CV'}
+                  {isTr ? 'CV İndir' : isEs ? 'Descargar CV' : 'Download CV'}
                 </a>
               </div>
 
@@ -245,11 +249,7 @@ const Home = () => {
                 <div className="w-64 h-64 bg-gradient-to-br from-electric-cyan/20 to-neon-blue/20 rounded-full backdrop-blur-sm border border-electric-cyan/30 flex items-center justify-center">
                   <div className="text-center">
                     <div className="w-32 h-32 mx-auto flex items-center justify-center">
-                      <img
-                        src="/assets/svg/union-logo.svg"
-                        alt="Uğur Emin Baynal Logo"
-                        className="w-full h-full text-electric-cyan opacity-90 drop-shadow-lg"
-                      />
+                      <ThemedLogo className="w-full h-full opacity-90" />
                     </div>
 
                   </div>
@@ -265,11 +265,13 @@ const Home = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="font-ibm-plex text-4xl md:text-5xl font-semibold text-cloud-white mb-4">
-              {isTr ? 'Teknik Beceriler ve Uzmanlık' : 'Technical Skills & Expertise'}
+              {isTr ? 'Teknik Beceriler ve Uzmanlık' : isEs ? 'Habilidades Técnicas y Experiencia' : 'Technical Skills & Expertise'}
             </h2>
             <p className="font-inter text-lg text-text-secondary max-w-2xl mx-auto">
               {isTr
                 ? 'Yenilikçi çözümler için mühendislik araçları ve teknolojileri'
+                : isEs
+                ? 'Herramientas y tecnologías de ingeniería para soluciones innovadoras'
                 : 'Mastering engineering tools and technologies for innovative solutions'}
             </p>
           </div>
@@ -297,11 +299,13 @@ const Home = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="font-ibm-plex text-3xl md:text-4xl font-semibold text-cloud-white mb-4">
-              {isTr ? 'Öne Çıkan Projeler' : 'Featured Projects'}
+              {isTr ? 'Öne Çıkan Projeler' : isEs ? 'Proyectos Destacados' : 'Featured Projects'}
             </h2>
             <p className="font-inter text-lg text-text-secondary max-w-2xl mx-auto">
               {isTr
                 ? 'Hibe destekli araştırma ve uygulamalı sürdürülebilir mühendislik.'
+                : isEs
+                ? 'Investigación financiada e ingeniería sostenible práctica.'
                 : 'Grant-funded research and hands-on sustainable engineering.'}
             </p>
           </div>
@@ -316,24 +320,26 @@ const Home = () => {
                 <div>
                   <h3 className="font-jetbrains text-xl font-semibold text-electric-cyan">K.A.Y.R.A.</h3>
                   <p className="font-inter text-sm text-text-secondary">
-                    {isTr ? 'İç Mekân Konumlandırma Sistemi' : 'Indoor Localization System'}
+                    {isTr ? 'İç Mekân Konumlandırma Sistemi' : isEs ? 'Sistema de Localización en Interiores' : 'Indoor Localization System'}
                   </p>
                 </div>
               </div>
               <p className="font-inter text-text-secondary mb-6 leading-relaxed flex-grow">
                 {isTr
                   ? 'BLE tabanlı iç mekân konumlandırma ve yön bulma — karmaşık kapalı alanlar için ölçeklenebilir bir yaklaşım. TÜBİTAK 2204-A araştırma desteğiyle.'
+                  : isEs
+                  ? 'Localización y orientación en interiores basada en BLE — un enfoque escalable para entornos interiores complejos. Con el apoyo de una beca de investigación TÜBİTAK 2204-A.'
                   : 'BLE-based localisation and wayfinding — a scalable approach for complex indoor environments. Supported by a TÜBİTAK 2204-A research grant.'}
               </p>
               <div className="flex flex-wrap gap-2 mb-6">
                 <span className="px-3 py-1 bg-electric-cyan/20 text-electric-cyan text-xs font-jetbrains rounded">BLE</span>
-                <span className="px-3 py-1 bg-neon-blue/20 text-neon-blue text-xs font-jetbrains rounded">{isTr ? 'Konumlandırma' : 'Localization'}</span>
+                <span className="px-3 py-1 bg-neon-blue/20 text-neon-blue text-xs font-jetbrains rounded">{isTr ? 'Konumlandırma' : isEs ? 'Localización' : 'Localization'}</span>
                 <span className="px-3 py-1 bg-cyber-orange/20 text-cyber-orange text-xs font-jetbrains rounded">IoT</span>
                 <span className="px-3 py-1 bg-electric-cyan/20 text-electric-cyan text-xs font-jetbrains rounded">TÜBİTAK</span>
               </div>
               <Link to="/projects" className="self-start">
                 <button className="btn-primary group">
-                  {isTr ? 'Projeyi Gör' : 'View Project'}
+                  {isTr ? 'Projeyi Gör' : isEs ? 'Ver Proyecto' : 'View Project'}
                   <ArrowRight size={20} className="ml-2 group-hover:translate-x-1 transition-transform" />
                 </button>
               </Link>
@@ -348,20 +354,22 @@ const Home = () => {
                 <div>
                   <h3 className="font-jetbrains text-xl font-semibold text-green-400">Silkworm</h3>
                   <p className="font-inter text-sm text-text-secondary">
-                    {isTr ? '3B Plastik Geri Dönüşüm Makinesi' : '3D Plastic Recycling Machine'}
+                    {isTr ? '3B Plastik Geri Dönüşüm Makinesi' : isEs ? 'Máquina de Reciclaje de Plástico 3D' : '3D Plastic Recycling Machine'}
                   </p>
                 </div>
               </div>
               <p className="font-inter text-text-secondary mb-6 leading-relaxed flex-grow">
                 {isTr
                   ? 'Plastik atığı 3B yazıcı filamentine dönüştüren bir makine — mekanik tasarım, motor ve ısıtma kontrolü, mikrodenetleyici tabanlı otomasyon. Kurucu Ortak & Ar-Ge Sorumlusu.'
+                  : isEs
+                  ? 'Una máquina que convierte residuos plásticos en filamento para impresoras 3D — diseño mecánico, control de motores y calefacción, y automatización basada en microcontroladores. Cofundador y Jefe de I+D.'
                   : 'A machine that turns plastic waste into 3D printer filament — mechanical design, motor and heating control, and microcontroller-based automation. Co-Founder & Head of R&D.'}
               </p>
               <div className="flex flex-wrap gap-2 mb-6">
-                <span className="px-3 py-1 bg-green-400/20 text-green-400 text-xs font-jetbrains rounded">{isTr ? 'Geri Dönüşüm' : 'Recycling'}</span>
-                <span className="px-3 py-1 bg-electric-cyan/20 text-electric-cyan text-xs font-jetbrains rounded">{isTr ? '3B Baskı' : '3D Printing'}</span>
-                <span className="px-3 py-1 bg-neon-blue/20 text-neon-blue text-xs font-jetbrains rounded">{isTr ? 'Otomasyon' : 'Automation'}</span>
-                <span className="px-3 py-1 bg-cyber-orange/20 text-cyber-orange text-xs font-jetbrains rounded">{isTr ? 'Gömülü Sistem' : 'Embedded'}</span>
+                <span className="px-3 py-1 bg-green-400/20 text-green-400 text-xs font-jetbrains rounded">{isTr ? 'Geri Dönüşüm' : isEs ? 'Reciclaje' : 'Recycling'}</span>
+                <span className="px-3 py-1 bg-electric-cyan/20 text-electric-cyan text-xs font-jetbrains rounded">{isTr ? '3B Baskı' : isEs ? 'Impresión 3D' : '3D Printing'}</span>
+                <span className="px-3 py-1 bg-neon-blue/20 text-neon-blue text-xs font-jetbrains rounded">{isTr ? 'Otomasyon' : isEs ? 'Automatización' : 'Automation'}</span>
+                <span className="px-3 py-1 bg-cyber-orange/20 text-cyber-orange text-xs font-jetbrains rounded">{isTr ? 'Gömülü Sistem' : isEs ? 'Embebidos' : 'Embedded'}</span>
               </div>
               <a
                 href="https://silkworm.uguremin.com"
@@ -369,7 +377,7 @@ const Home = () => {
                 rel="noopener noreferrer"
                 className="btn-secondary group self-start"
               >
-                {isTr ? 'Siteyi Ziyaret Et' : 'Visit Site'}
+                {isTr ? 'Siteyi Ziyaret Et' : isEs ? 'Visitar Sitio' : 'Visit Site'}
                 <ExternalLink size={20} className="ml-2 group-hover:translate-x-1 transition-transform" />
               </a>
             </div>
@@ -382,18 +390,20 @@ const Home = () => {
         <div className="max-w-4xl mx-auto text-center">
           <div className="project-card p-12">
             <h2 className="font-ibm-plex text-3xl md:text-4xl font-semibold text-cloud-white mb-6">
-              {isTr ? 'Elektronik ve Yapay Zekâda Birlikte Üretelim mi?' : 'Ready to Innovate in Electronics & AI?'}
+              {isTr ? 'Elektronik ve Yapay Zekâda Birlikte Üretelim mi?' : isEs ? '¿Listos para innovar en Electrónica e IA?' : 'Ready to Innovate in Electronics & AI?'}
             </h2>
             <p className="font-inter text-lg text-text-secondary mb-8 max-w-2xl mx-auto">
               {isTr
                 ? 'Son teknoloji Ar-Ge projelerinde birlikte çalışalım. Elektronik ile yapay zekâyı buluşturup çığır açan çözümler üretmeye tutkuyla bağlıyım.'
+                : isEs
+                ? 'Colaboremos en proyectos de I+D de vanguardia. Me apasiona integrar la electrónica y la inteligencia artificial para crear soluciones innovadoras.'
                 : "Let's collaborate on cutting-edge R&D projects. I'm passionate about integrating electronics and artificial intelligence to create groundbreaking solutions."}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact">
                 <button className="btn-primary group">
                   <Mail size={20} className="mr-2 group-hover:scale-110 transition-transform" />
-                  {isTr ? 'İletişime Geç' : 'Get in Touch'}
+                  {isTr ? 'İletişime Geç' : isEs ? 'Contáctame' : 'Get in Touch'}
                 </button>
               </Link>
               <a

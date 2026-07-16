@@ -2,19 +2,27 @@ import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Menu, X, Sun, Moon } from 'lucide-react'
 import { useSettings } from '../context/SettingsContext'
+import ThemedLogo from './ThemedLogo'
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const location = useLocation()
   const { theme, lang, toggleTheme, toggleLang } = useSettings()
 
+  const linkNames: Record<string, Record<string, string>> = {
+    en: { home: 'Home', about: 'About', projects: 'Projects', experience: 'Experience', certificates: 'Certificates', contact: 'Contact' },
+    tr: { home: 'Ana Sayfa', about: 'Hakkımda', projects: 'Projeler', experience: 'Deneyim', certificates: 'Sertifikalar', contact: 'İletişim' },
+    es: { home: 'Inicio', about: 'Sobre mí', projects: 'Proyectos', experience: 'Experiencia', certificates: 'Certificados', contact: 'Contacto' },
+  }
+  const L = linkNames[lang]
+
   const navLinks = [
-    { name: lang === 'tr' ? 'Ana Sayfa' : 'Home', path: '/' },
-    { name: lang === 'tr' ? 'Hakkımda' : 'About', path: '/about' },
-    { name: lang === 'tr' ? 'Projeler' : 'Projects', path: '/projects' },
-    { name: lang === 'tr' ? 'Deneyim' : 'Experience', path: '/experience' },
-    { name: lang === 'tr' ? 'Sertifikalar' : 'Certificates', path: '/certificates' },
-    { name: lang === 'tr' ? 'İletişim' : 'Contact', path: '/contact' },
+    { name: L.home, path: '/' },
+    { name: L.about, path: '/about' },
+    { name: L.projects, path: '/projects' },
+    { name: L.experience, path: '/experience' },
+    { name: L.certificates, path: '/certificates' },
+    { name: L.contact, path: '/contact' },
   ]
 
   const isActive = (path: string) => location.pathname === path
@@ -30,10 +38,11 @@ const Navbar = () => {
       </button>
       <button
         onClick={toggleLang}
-        aria-label={lang === 'en' ? 'Türkçeye geç' : 'Switch to English'}
+        aria-label="Change language"
+        title="EN → TR → ES"
         className="px-2 py-1.5 rounded-lg font-jetbrains text-xs font-semibold text-text-muted border border-soft-graphite hover:text-electric-cyan hover:border-electric-cyan/50 hover:bg-electric-cyan/10 transition-all duration-300"
       >
-        {lang === 'en' ? 'TR' : 'EN'}
+        {lang.toUpperCase()}
       </button>
     </div>
   )
@@ -44,11 +53,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           <Link to="/" className="flex items-center group">
             <div className="mr-4 group-hover:scale-105 transition-all duration-300">
-              <img
-                src="/assets/svg/union-logo.svg"
-                alt="Uğur Emin Baynal Logo"
-                className="w-10 h-10 group-hover:brightness-110 transition-all duration-300"
-              />
+              <ThemedLogo className="w-10 h-10 group-hover:brightness-110 transition-all duration-300" />
             </div>
             <span className="font-ibm-plex text-xl font-bold text-electric-cyan group-hover:text-glow transition-all duration-300">
               Uğur Emin Baynal

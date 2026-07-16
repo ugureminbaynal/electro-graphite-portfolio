@@ -6,6 +6,7 @@ import { useSettings } from '../context/SettingsContext'
 const Experience = () => {
   const { lang } = useSettings()
   const isTr = lang === 'tr'
+  const isEs = lang === 'es'
 
   const experiences = [
     {
@@ -252,9 +253,11 @@ const Experience = () => {
         <div className="max-w-7xl mx-auto">
           <PCBTimeline
             entries={experiences}
-            title={isTr ? "Profesyonel Deneyim" : "Professional Experience"}
+            title={isTr ? "Profesyonel Deneyim" : isEs ? "Experiencia Profesional" : "Professional Experience"}
             subtitle={isTr
               ? "Ar-Ge, akademi ve endüstriyi kapsayan; elektronik, yazılım geliştirme ve mühendislik uzmanlığını yansıtan deneyimler."
+              : isEs
+              ? "Una amplia gama de experiencias profesionales que abarcan I+D, academia e industria, mostrando experiencia en electrónica, desarrollo de software e ingeniería."
               : "A diverse range of professional experiences spanning R&D, academia, and industry, showcasing expertise in electronics, software development, and engineering."}
           />
 
@@ -262,7 +265,7 @@ const Experience = () => {
           <div className="mt-20">
             <h2 className="font-ibm-plex text-3xl font-semibold text-cloud-white mb-8 flex items-center">
               <Award className="w-8 h-8 text-electric-cyan mr-3" />
-              {isTr ? 'Temel Yetkinlikler' : 'Core Competencies'}
+              {isTr ? 'Temel Yetkinlikler' : isEs ? 'Competencias Clave' : 'Core Competencies'}
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {skills.map((skill, index) => (
@@ -280,17 +283,19 @@ const Experience = () => {
           <div className="mt-20 text-center">
             <div className="project-card p-8">
               <h2 className="font-ibm-plex text-2xl font-semibold text-cloud-white mb-4">
-                {isTr ? 'Yeni Zorluklara Hazırım' : 'Ready for New Challenges'}
+                {isTr ? 'Yeni Zorluklara Hazırım' : isEs ? 'Listo para Nuevos Retos' : 'Ready for New Challenges'}
               </h2>
               <p className="font-inter text-text-secondary mb-6">
                 {isTr
                   ? 'Becerilerimi Ar-Ge, mühendislik ve teknoloji geliştirme alanlarında uygulayabileceğim yeni fırsatlar arıyorum.'
+                  : isEs
+                  ? 'Siempre busco nuevas oportunidades para aplicar mis habilidades en I+D, ingeniería y desarrollo tecnológico.'
                   : "I'm always looking for new opportunities to apply my skills in R&D, engineering, and technology development."}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a href="mailto:baynal@uguremin.com" className="btn-primary group">
                   <Briefcase size={20} className="mr-2 group-hover:scale-110 transition-transform" />
-                  {isTr ? 'Fırsatlar için İletişime Geç' : 'Contact for Opportunities'}
+                  {isTr ? 'Fırsatlar için İletişime Geç' : isEs ? 'Contactar por Oportunidades' : 'Contact for Opportunities'}
                 </a>
                 <a
                   href="/Uğur-Emin-Baynal-FlowCV-Resume-20260702.pdf"
@@ -298,7 +303,7 @@ const Experience = () => {
                   className="btn-secondary group"
                 >
                   <Download size={20} className="mr-2 group-hover:scale-110 transition-transform" />
-                  {isTr ? 'Özgeçmişi İndir' : 'Download Resume'}
+                  {isTr ? 'Özgeçmişi İndir' : isEs ? 'Descargar Currículum' : 'Download Resume'}
                 </a>
               </div>
             </div>

@@ -31,6 +31,7 @@ const PCBTimeline: React.FC<PCBTimelineProps> = ({ entries, title, subtitle }) =
   const [selectedEntry, setSelectedEntry] = useState<TimelineEntry | null>(null)
   const { lang } = useSettings()
   const isTr = lang === 'tr'
+  const isEs = lang === 'es'
 
   // Sort entries by date (most recent first); recognizes English and Turkish month abbreviations
   const sortedEntries = [...entries].sort((a, b) => {
@@ -61,8 +62,9 @@ const PCBTimeline: React.FC<PCBTimelineProps> = ({ entries, title, subtitle }) =
   }
 
   const getStatusLabel = (status?: string) => {
-    if (!isTr) return status
-    return status === 'Active' ? 'Aktif' : 'Tamamlandı'
+    if (isTr) return status === 'Active' ? 'Aktif' : 'Tamamlandı'
+    if (isEs) return status === 'Active' ? 'Activo' : 'Completado'
+    return status
   }
 
   return (
@@ -111,12 +113,12 @@ const PCBTimeline: React.FC<PCBTimelineProps> = ({ entries, title, subtitle }) =
                   <div className={`
                     w-8 h-8 rounded-full border-2 border-electric-cyan bg-deep-charcoal
                     flex items-center justify-center transition-all duration-300
-                    ${isHovered ? 'scale-125 border-4 shadow-[0_0_20px_rgba(34,211,238,0.6)]' : ''}
+                    ${isHovered ? 'scale-125 border-4 shadow-[0_0_20px_rgb(var(--electric-cyan)/0.6)]' : ''}
                   `}>
                     {/* Via inner pad */}
                     <div className={`
                       w-4 h-4 rounded-full bg-electric-cyan transition-all duration-300
-                      ${isHovered ? 'bg-white shadow-[0_0_15px_rgba(34,211,238,0.8)]' : ''}
+                      ${isHovered ? 'bg-white shadow-[0_0_15px_rgb(var(--electric-cyan)/0.8)]' : ''}
                     `} />
                   </div>
                   {/* Via drill hole */}
@@ -137,7 +139,7 @@ const PCBTimeline: React.FC<PCBTimelineProps> = ({ entries, title, subtitle }) =
                   {/* Trace background */}
                   <div className={`
                     absolute inset-0 rounded-full transition-all duration-300
-                    ${isHovered ? 'bg-electric-cyan shadow-[0_0_10px_rgba(34,211,238,0.5)]' : 'bg-electric-cyan/40'}
+                    ${isHovered ? 'bg-electric-cyan shadow-[0_0_10px_rgb(var(--electric-cyan)/0.5)]' : 'bg-electric-cyan/40'}
                   `} />
                   
                   {/* Current flow animation */}
@@ -160,7 +162,7 @@ const PCBTimeline: React.FC<PCBTimelineProps> = ({ entries, title, subtitle }) =
                       relative p-6 rounded-lg border transition-all duration-300 overflow-visible
                       bg-smoky-steel/30 backdrop-blur-sm
                       ${isHovered 
-                        ? 'border-electric-cyan shadow-[0_0_30px_rgba(34,211,238,0.2)] scale-[1.02]' 
+                        ? 'border-electric-cyan shadow-[0_0_30px_rgb(var(--electric-cyan)/0.2)] scale-[1.02]' 
                         : 'border-electric-cyan/20 hover:border-electric-cyan/40'
                       }
                     `}
@@ -231,7 +233,7 @@ const PCBTimeline: React.FC<PCBTimelineProps> = ({ entries, title, subtitle }) =
                       )}
 
                       <div className="text-xs text-electric-cyan font-jetbrains flex items-center">
-                        <span>{isTr ? 'Detaylar için tıkla' : 'Click for details'}</span>
+                        <span>{isTr ? 'Detaylar için tıkla' : isEs ? 'Clic para ver detalles' : 'Click for details'}</span>
                         <ExternalLink className="w-3 h-3 ml-1" />
                       </div>
                     </div>
@@ -309,7 +311,7 @@ const PCBTimeline: React.FC<PCBTimelineProps> = ({ entries, title, subtitle }) =
 
               {/* Description */}
               <div className="mb-6">
-                <h3 className="font-jetbrains text-sm font-semibold text-electric-cyan mb-2">{isTr ? 'Genel Bakış' : 'Overview'}</h3>
+                <h3 className="font-jetbrains text-sm font-semibold text-electric-cyan mb-2">{isTr ? 'Genel Bakış' : isEs ? 'Resumen' : 'Overview'}</h3>
                 <p className="font-inter text-text-secondary leading-relaxed">
                   {selectedEntry.details || selectedEntry.description}
                 </p>
@@ -318,7 +320,7 @@ const PCBTimeline: React.FC<PCBTimelineProps> = ({ entries, title, subtitle }) =
               {/* Achievements */}
               {selectedEntry.achievements && selectedEntry.achievements.length > 0 && (
                 <div className="mb-6">
-                  <h3 className="font-jetbrains text-sm font-semibold text-electric-cyan mb-3">{isTr ? 'Öne Çıkanlar' : 'Key Achievements'}</h3>
+                  <h3 className="font-jetbrains text-sm font-semibold text-electric-cyan mb-3">{isTr ? 'Öne Çıkanlar' : isEs ? 'Logros Clave' : 'Key Achievements'}</h3>
                   <ul className="space-y-2">
                     {selectedEntry.achievements.map((achievement, i) => (
                       <li key={i} className="flex items-start space-x-2">
@@ -333,7 +335,7 @@ const PCBTimeline: React.FC<PCBTimelineProps> = ({ entries, title, subtitle }) =
               {/* Technologies */}
               {selectedEntry.technologies && selectedEntry.technologies.length > 0 && (
                 <div className="mb-6">
-                  <h3 className="font-jetbrains text-sm font-semibold text-electric-cyan mb-3">{isTr ? 'Teknolojiler' : 'Technologies'}</h3>
+                  <h3 className="font-jetbrains text-sm font-semibold text-electric-cyan mb-3">{isTr ? 'Teknolojiler' : isEs ? 'Tecnologías' : 'Technologies'}</h3>
                   <div className="flex flex-wrap gap-2">
                     {selectedEntry.technologies.map((tech, i) => (
                       <span 
@@ -350,7 +352,7 @@ const PCBTimeline: React.FC<PCBTimelineProps> = ({ entries, title, subtitle }) =
               {/* Images */}
               {selectedEntry.images && selectedEntry.images.length > 0 && (
                 <div className="mb-6">
-                  <h3 className="font-jetbrains text-sm font-semibold text-electric-cyan mb-3">{isTr ? 'Galeri' : 'Gallery'}</h3>
+                  <h3 className="font-jetbrains text-sm font-semibold text-electric-cyan mb-3">{isTr ? 'Galeri' : isEs ? 'Galería' : 'Gallery'}</h3>
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                     {selectedEntry.images.map((img, i) => (
                       <div key={i} className="aspect-video rounded-lg overflow-hidden border border-electric-cyan/20">
@@ -364,7 +366,7 @@ const PCBTimeline: React.FC<PCBTimelineProps> = ({ entries, title, subtitle }) =
               {/* Documents */}
               {selectedEntry.documents && selectedEntry.documents.length > 0 && (
                 <div className="mb-6">
-                  <h3 className="font-jetbrains text-sm font-semibold text-electric-cyan mb-3">{isTr ? 'Belgeler' : 'Documents'}</h3>
+                  <h3 className="font-jetbrains text-sm font-semibold text-electric-cyan mb-3">{isTr ? 'Belgeler' : isEs ? 'Documentos' : 'Documents'}</h3>
                   <div className="space-y-2">
                     {selectedEntry.documents.map((doc, i) => (
                       <a 
@@ -391,7 +393,7 @@ const PCBTimeline: React.FC<PCBTimelineProps> = ({ entries, title, subtitle }) =
                   className="inline-flex items-center space-x-2 px-4 py-2 bg-electric-cyan/10 text-electric-cyan rounded-lg border border-electric-cyan/30 hover:bg-electric-cyan/20 transition-colors"
                 >
                   <ExternalLink className="w-4 h-4" />
-                  <span className="font-jetbrains text-sm">{isTr ? 'Projeye Git' : 'Visit Project'}</span>
+                  <span className="font-jetbrains text-sm">{isTr ? 'Projeye Git' : isEs ? 'Visitar Proyecto' : 'Visit Project'}</span>
                 </a>
               )}
             </div>
